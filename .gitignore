@@ -1,0 +1,8 @@
+/Objects
+/Objects/
+/DebugConfig
+
+*.o
+*.d
+*.crf
+*.htm

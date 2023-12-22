@@ -1,0 +1,4 @@
+--gnu -c --cpu Cortex-M3 -g -O1 --apcs=interwork --split_sections -I .\Start -I .\User -I .\Library -I .\System -I .\Hardware
+-ID:\Keil5\ARM\Packs\Keil\STM32F1xx_DFP\2.2.0\Device\Include
+-D__UVISION_VERSION="538" -DSTM32F10X_MD -DUSE_STDPERIPH_DRIVER
+-o .\objects\encode.o --omf_browse .\objects\encode.crf --depend .\objects\encode.d "Hardware\Encode.c"
