@@ -207,7 +207,7 @@ void EXTI15_10_IRQHandler(void) {
 					break;
 				
 				case I2C_MODE_RECEIVE:
-					if (SCL_Read() == Bit_SET && SwSlaveI2C.Cnt == 1) { // RESTART
+					if (SCL_Read() == Bit_SET && SwSlaveI2C.Cnt <= 1) { // RESTART
 						Address = 0;
 						SwSlaveI2C.RxIdx = 0;
 						SwSlaveI2C.TxIdx = 0;

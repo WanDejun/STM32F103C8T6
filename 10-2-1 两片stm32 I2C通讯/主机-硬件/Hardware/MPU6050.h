@@ -10,7 +10,6 @@ extern struct MPU6050_DataTypeDef MPU6050_Data;
 
 void MPU6050_Init(void);
 void MPU6050_WriteReg(uint8_t RegAddress, uint8_t Data);
-uint8_t MPU6050_ReadReg();
-void MPU6050_GetData(void);
+uint8_t MPU6050_ReadReg(void);
 
 #endif

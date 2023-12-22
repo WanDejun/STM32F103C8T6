@@ -32,19 +32,10 @@ void MPU6050_WriteReg(uint8_t RegAddress, uint8_t Data) {
 	I2C_GenerateSTOP(I2C2, ENABLE);
 }
 
-uint8_t MPU6050_ReadReg(uint8_t RegAddress) {
+uint8_t MPU6050_ReadReg() {
 	uint8_t Data;
 
 	I2C_GenerateSTART(I2C2, ENABLE); // 生成start, 库函数均为非阻塞式函数需要等待标志位来判断数据传输/接收完成
-	MPU6050_WaitEvent(I2C2, I2C_EVENT_MASTER_MODE_SELECT); //等待模式选择标志位
-		
-	I2C_Send7bitAddress(I2C2, MPU6050_ADDRESS, I2C_Direction_Transmitter); //发送外设地址和写指令
-	MPU6050_WaitEvent(I2C2, I2C_EVENT_MASTER_TRANSMITTER_MODE_SELECTED); //等待传输模式选择标志位（从机应答）
-	
-	I2C_SendData(I2C2, RegAddress); //写入数据地址
-	MPU6050_WaitEvent(I2C2, I2C_EVENT_MASTER_BYTE_TRANSMITTED); //等待标志位,数据从寄存器转移到输出移位寄存器，数据传输完成
-	
-	I2C_GenerateSTART(I2C2, ENABLE); //restart状态
 	MPU6050_WaitEvent(I2C2, I2C_EVENT_MASTER_MODE_SELECT); //等待模式选择标志位
 	
 	I2C_Send7bitAddress(I2C2, MPU6050_ADDRESS, I2C_Direction_Receiver); ////发送外设地址和读指令
@@ -72,7 +63,7 @@ void MPU6050_Init(void) {
 	I2C_InitTypeDef I2C_InitStructure;
 	I2C_InitStructure.I2C_Ack = I2C_Ack_Enable;
 	I2C_InitStructure.I2C_AcknowledgedAddress = I2C_AcknowledgedAddress_7bit;
-	I2C_InitStructure.I2C_ClockSpeed = 7200;
+	I2C_InitStructure.I2C_ClockSpeed = 5000;
 	I2C_InitStructure.I2C_DutyCycle = I2C_DutyCycle_2;
 	I2C_InitStructure.I2C_Mode = I2C_Mode_I2C;
 	I2C_InitStructure.I2C_OwnAddress1 = 0x00;
