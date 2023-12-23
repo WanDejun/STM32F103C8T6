@@ -6,7 +6,7 @@
   <Header>### uVision Project, (C) Keil Software</Header>
 
   <PrjGuiSettings>
-    <LastAddFilePath>D:\MCU\STM32\STM32Project\10-2-1 两片stm32 I2C通讯\从机-硬件\Hardware</LastAddFilePath>
+    <LastAddFilePath>D:\MCU\STM32\STM32Project\10-2-1 两片stm32 I2C通讯\主机-硬件\Hardware</LastAddFilePath>
   </PrjGuiSettings>
 
   <ViewPool/>
@@ -93,8 +93,8 @@
       <flags>2</flags>
       <showCmd>3</showCmd>
       <MinPosition>
-        <xPos>-32000</xPos>
-        <yPos>-32000</yPos>
+        <xPos>-1</xPos>
+        <yPos>-1</yPos>
       </MinPosition>
       <MaxPosition>
         <xPos>-1</xPos>
@@ -102,8 +102,8 @@
       </MaxPosition>
       <NormalPosition>
         <Top>207</Top>
-        <Left>501</Left>
-        <Right>1781</Right>
+        <Left>434</Left>
+        <Right>1714</Right>
         <Bottom>898</Bottom>
       </NormalPosition>
     </WindowPosition>
@@ -3606,18 +3606,18 @@
       <ActiveTab>1</ActiveTab>
       <Doc>
         <Name>.\User\main.c</Name>
-        <ColumnNumber>16</ColumnNumber>
+        <ColumnNumber>24</ColumnNumber>
         <TopLine>1</TopLine>
-        <CurrentLine>17</CurrentLine>
+        <CurrentLine>8</CurrentLine>
         <Folding>1</Folding>
         <ContractedFolders></ContractedFolders>
         <PaneID>0</PaneID>
       </Doc>
       <Doc>
         <Name>.\Hardware\MyI2C.c</Name>
-        <ColumnNumber>36</ColumnNumber>
-        <TopLine>3</TopLine>
-        <CurrentLine>11</CurrentLine>
+        <ColumnNumber>0</ColumnNumber>
+        <TopLine>204</TopLine>
+        <CurrentLine>221</CurrentLine>
         <Folding>1</Folding>
         <ContractedFolders></ContractedFolders>
         <PaneID>0</PaneID>

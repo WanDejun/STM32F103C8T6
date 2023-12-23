@@ -904,7 +904,7 @@ I (.\Library\misc.h)(0x4D783BB4)
 I (Hardware\OLED.h)(0x65326EFA)
 I (.\System\Delay.h)(0x6130920D)
 F (.\Hardware\LightSenser.h)(0x6573FEE2)()
-F (.\User\main.c)(0x658461F2)(--gnu -c --cpu Cortex-M3 -g -O1 --apcs=interwork --split_sections -I .\Start -I .\User -I .\Library -I .\System -I .\Hardware-ID:\Keil5\ARM\Packs\Keil\STM32F1xx_DFP\2.2.0\Device\Include-D__UVISION_VERSION="538" -DSTM32F10X_MD -DUSE_STDPERIPH_DRIVER-o .\objects\main.o --omf_browse .\objects\main.crf --depend .\objects\main.d)
+F (.\User\main.c)(0x6586B399)(--gnu -c --cpu Cortex-M3 -g -O1 --apcs=interwork --split_sections -I .\Start -I .\User -I .\Library -I .\System -I .\Hardware-ID:\Keil5\ARM\Packs\Keil\STM32F1xx_DFP\2.2.0\Device\Include-D__UVISION_VERSION="538" -DSTM32F10X_MD -DUSE_STDPERIPH_DRIVER-o .\objects\main.o --omf_browse .\objects\main.crf --depend .\objects\main.d)
 I (.\Start\stm32f10x.h)(0x4D783CB4)
 I (.\Start\core_cm3.h)(0x4D523B58)
 I (D:\Keil5\ARM\ARM_ Compiler_ 5.06u7\include\stdint.h)(0x5E8E3CC2)

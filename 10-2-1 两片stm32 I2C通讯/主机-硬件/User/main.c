@@ -1,7 +1,7 @@
 #include "stm32f10x.h"                  /* Device header */
 #include "Delay.h"
 #include "OLED.h"
-#include "MPU6050.h"
+#include "i2c.h"
 #include "TIM.h"
 #include "LED.h"
 
@@ -14,7 +14,7 @@ static void Init(void) {
 	NVIC_PriorityGroupConfig(NVIC_PriorityGroup_2);
 	
 	OLED_Init();
-	MPU6050_Init();
+	i2c_Init();
 	TIM_Init();
 	LED_Init();
 }
@@ -29,8 +29,8 @@ int main(void) {
 void TIM2_IRQHandler(void) {
 	if (TIM_GetITStatus(TIM2, TIM_IT_Update)) {
 		//Send();
-		Num = MPU6050_ReadReg();
-		if (Num == 0x11) LED_set(GPIO_Pin_8, Bit_RESET);
+		Num = i2c_ReadReg();
+		if (Num == 0x21) LED_set(GPIO_Pin_8, Bit_RESET);
 //		static uint8_t num = 0x00;
 //		num++;
 //		MPU6050_WriteReg(num, 0x41);

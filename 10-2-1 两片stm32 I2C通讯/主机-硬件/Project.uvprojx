@@ -695,16 +695,6 @@
               <FilePath>.\Hardware\OLED_Font.h</FilePath>
             </File>
             <File>
-              <FileName>MPU6050.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>.\Hardware\MPU6050.c</FilePath>
-            </File>
-            <File>
-              <FileName>MPU6050.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>.\Hardware\MPU6050.h</FilePath>
-            </File>
-            <File>
               <FileName>MPU6050_Reg.h</FileName>
               <FileType>5</FileType>
               <FilePath>.\Hardware\MPU6050_Reg.h</FilePath>
@@ -718,6 +708,16 @@
               <FileName>TIM.h</FileName>
               <FileType>5</FileType>
               <FilePath>.\Hardware\TIM.h</FilePath>
+            </File>
+            <File>
+              <FileName>i2c.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\Hardware\i2c.c</FilePath>
+            </File>
+            <File>
+              <FileName>i2c.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\Hardware\i2c.h</FilePath>
             </File>
           </Files>
         </Group>

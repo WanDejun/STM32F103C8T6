@@ -175,7 +175,7 @@ void EXTI15_10_IRQHandler(void) {
 	else {												//SDA
 		EXTI_ClearITPendingBit(EXTI_Line11);
 		
-		if (SDA_Read() == Bit_SET) {                    //上升沿
+		if (SDA_Read() == Bit_SET) {                    //SDA上升沿
 			switch (SwSlaveI2C.State) {
 				case I2C_MODE_END:
 					if (SCL_Read() == Bit_SET) {
@@ -193,7 +193,7 @@ void EXTI15_10_IRQHandler(void) {
 					break;
 			}
 		}                                               
-		else {                                          //下降沿
+		else {                                          //SDA下降沿
 			switch (SwSlaveI2C.State) {					
 				case I2C_MODE_SLEEP:				//SLEEP状态下 SDA下降沿，SCL高电平： 起始信号
 					if (SCL_Read() == Bit_SET) {
@@ -218,13 +218,14 @@ void EXTI15_10_IRQHandler(void) {
 					break;
 					
 				default:
-//					if (SCL_Read() == Bit_SET) {
-//						Address = 0;
-//						SwSlaveI2C.RxIdx = 0;
-//						SwSlaveI2C.TxIdx = 0;
-//						SwSlaveI2C.Cnt = 0;
-//						SwSlaveI2C.State = I2C_MODE_START;
-//					}
+					if (SCL_Read() == Bit_SET) {
+						Address = 0;
+						SwSlaveI2C.RxIdx = 0;
+						SwSlaveI2C.TxIdx = 0;
+						SwSlaveI2C.Cnt = 0;
+						SwSlaveI2C.State = I2C_MODE_START;
+						SDA_high();
+					}
 					break;
 			}
 			

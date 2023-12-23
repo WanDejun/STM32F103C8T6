@@ -8,8 +8,8 @@ struct MPU6050_DataTypeDef{
 }; 
 extern struct MPU6050_DataTypeDef MPU6050_Data;
 
-void MPU6050_Init(void);
-void MPU6050_WriteReg(uint8_t RegAddress, uint8_t Data);
-uint8_t MPU6050_ReadReg(void);
+void i2c_Init(void);
+void i2c_WriteReg(uint8_t RegAddress, uint8_t Data);
+uint8_t i2c_ReadReg(void);
 
 #endif
