@@ -27,7 +27,7 @@ int main(void) {
 	while (1) {
 		int i;
 		GPIO_INFO = 1;
-		for (i = 0; i < 5; i++) {
+		for (i = 0; i < 10; i++) {
 			GPIO_Write(GPIOA, ~GPIO_INFO);
 			delay_ms(100);
 			GPIO_INFO <<= 1;
