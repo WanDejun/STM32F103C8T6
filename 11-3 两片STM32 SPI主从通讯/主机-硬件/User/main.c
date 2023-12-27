@@ -5,7 +5,7 @@
 #include "MySPI.h"
 #include "TIM.h"
 
-uint8_t Array[13] = {72, 101, 108, 108, 111, 32, 87, 111, 114, 108, 100, 33, 0};
+uint8_t Array[14] = {72, 101, 108, 108, 111, 32, 87, 111, 114, 108, 100, 33, 0, 0};
 
 static void Init(void) {
 	RCC_APB2PeriphClockCmd(RCC_APB2Periph_GPIOA, ENABLE);

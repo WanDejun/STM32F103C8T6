@@ -23,8 +23,8 @@ void MySPI_Init(void) {
 	GPIO_Init(GPIOB, &GPIO_InitStructure);
 	
 	SPI_InitTypeDef SPI_InitSturcture;
-	SPI_InitSturcture.SPI_BaudRatePrescaler = SPI_BaudRatePrescaler_256;
-	SPI_InitSturcture.SPI_CPHA = SPI_CPHA_1Edge;
+	SPI_InitSturcture.SPI_BaudRatePrescaler = SPI_BaudRatePrescaler_4;
+	SPI_InitSturcture.SPI_CPHA = SPI_CPHA_2Edge;
 	SPI_InitSturcture.SPI_CPOL = SPI_CPOL_Low;
 	SPI_InitSturcture.SPI_CRCPolynomial = 7;
 	SPI_InitSturcture.SPI_DataSize = SPI_DataSize_8b;

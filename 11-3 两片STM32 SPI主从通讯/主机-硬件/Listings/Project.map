@@ -931,7 +931,7 @@ Image Symbol Table
     i.UsageFault_Handler                     0x08000aec   Section        0  stm32f10x_it.o(i.UsageFault_Handler)
     i.main                                   0x08000af0   Section        0  main.o(i.main)
     .constdata                               0x08000b04   Section     1520  oled.o(.constdata)
-    .data                                    0x20000000   Section       13  main.o(.data)
+    .data                                    0x20000000   Section       14  main.o(.data)
     .bss                                     0x20000010   Section       96  libspace.o(.bss)
     HEAP                                     0x20000070   Section      512  startup_stm32f10x_md.o(HEAP)
     Heap_Mem                                 0x20000070   Data         512  startup_stm32f10x_md.o(HEAP)
@@ -1088,7 +1088,7 @@ Image Symbol Table
     GPIO_WriteBit                            0x080002ed   Thumb Code    12  stm32f10x_gpio.o(i.GPIO_WriteBit)
     HardFault_Handler                        0x080002f9   Thumb Code     2  stm32f10x_it.o(i.HardFault_Handler)
     MemManage_Handler                        0x08000325   Thumb Code     2  stm32f10x_it.o(i.MemManage_Handler)
-    MySPI_Init                               0x08000329   Thumb Code   158  myspi.o(i.MySPI_Init)
+    MySPI_Init                               0x08000329   Thumb Code   160  myspi.o(i.MySPI_Init)
     MySPI_Start                              0x080003d1   Thumb Code     6  myspi.o(i.MySPI_Start)
     MySPI_Stop                               0x080003d7   Thumb Code     6  myspi.o(i.MySPI_Stop)
     MySPI_SwapArray                          0x080003dd   Thumb Code   112  myspi.o(i.MySPI_SwapArray)
@@ -1129,7 +1129,7 @@ Image Symbol Table
     OLED_F8x16                               0x08000b04   Data        1520  oled.o(.constdata)
     Region$$Table$$Base                      0x080010f4   Number         0  anon$$obj.o(Region$$Table)
     Region$$Table$$Limit                     0x08001114   Number         0  anon$$obj.o(Region$$Table)
-    Array                                    0x20000000   Data          13  main.o(.data)
+    Array                                    0x20000000   Data          14  main.o(.data)
     __libspace_start                         0x20000010   Data          96  libspace.o(.bss)
     __temporary_stack_top$libspace           0x20000070   Data           0  libspace.o(.bss)
 
@@ -1269,8 +1269,8 @@ Memory Map of the image
 
     Exec Addr    Load Addr    Size         Type   Attr      Idx    E Section Name        Object
 
-    0x20000000   0x08001114   0x0000000d   Data   RW         3568    .data               main.o
-    0x2000000d   0x08001121   0x00000003   PAD
+    0x20000000   0x08001114   0x0000000e   Data   RW         3568    .data               main.o
+    0x2000000e   0x08001122   0x00000002   PAD
     0x20000010        -       0x00000060   Zero   RW         3699    .bss                c_w.l(libspace.o)
     0x20000070        -       0x00000200   Zero   RW          131    HEAP                startup_stm32f10x_md.o
     0x20000270        -       0x00000400   Zero   RW          130    STACK               startup_stm32f10x_md.o
@@ -1285,9 +1285,9 @@ Image component sizes
 
          0          0          0          0          0       4564   core_cm3.o
          0          0          0          0          0       8316   led.o
-       114         10          0         13          0       2061   main.o
+       114         10          0         14          0       2061   main.o
        120         14          0          0          0     204867   misc.o
-       312         18          0          0          0     241866   myspi.o
+       312         16          0          0          0     241866   myspi.o
        708         30       1520          0          0       5362   oled.o
         64         26        236          0       1536        772   startup_stm32f10x_md.o
        178          0          0          0          0      10896   stm32f10x_gpio.o
@@ -1299,9 +1299,9 @@ Image component sizes
        112          0          0          0          0        555   tim.o
 
     ----------------------------------------------------------------------
-      2306        178       1788         16       1536     521394   Object Totals
+      2306        176       1788         16       1536     521394   Object Totals
          0          0         32          0          0          0   (incl. Generated)
-        16          0          0          3          0          0   (incl. Padding)
+        16          0          0          2          0          0   (incl. Padding)
 
     ----------------------------------------------------------------------
 
@@ -1348,9 +1348,9 @@ Image component sizes
 
       Code (inc. data)   RO Data    RW Data    ZI Data      Debug   
 
-      2584        194       1788         16       1632     519582   Grand Totals
-      2584        194       1788         16       1632     519582   ELF Image Totals
-      2584        194       1788         16          0          0   ROM Totals
+      2584        192       1788         16       1632     519582   Grand Totals
+      2584        192       1788         16       1632     519582   ELF Image Totals
+      2584        192       1788         16          0          0   ROM Totals
 
 ==============================================================================
 
