@@ -24,7 +24,7 @@ for cnt in range(1, 2191):
 
     write_len = ser.write(bytes(array))
 
-    time.sleep(0.01)
+    time.sleep(0.009)
 
 
 file.close()
