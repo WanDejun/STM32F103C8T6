@@ -3,11 +3,14 @@
 #include "MySPI.h"
 #include "W25Q64_Ins.h"
 
+void W25Q64_WaitBusy(void);
+
 void W25Q64_Init(void) {
 	MySPI_Init();
 }
 
 void W25Q64_ReadID(uint8_t *MID, uint16_t *DID) {
+	W25Q64_WaitBusy();
 	MySPI_Start();
 	MySPI_SwapByte(W25Q64_JEDEC_ID);
 	(*MID) = MySPI_SwapByte(W25Q64_DUMMY_BYTE);

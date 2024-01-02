@@ -5,18 +5,6 @@ static void MySPI_W_SS(uint8_t BitValue) {
 	GPIO_WriteBit(GPIOA, GPIO_Pin_4, (BitAction)BitValue);
 }
 
-//static void MySPI_W_SCK(uint8_t BitValue) {
-//	GPIO_WriteBit(GPIOA, GPIO_Pin_5, (BitAction)BitValue);
-//}
-
-//static void MySPI_W_MOSI(uint8_t BitValue) {
-//	GPIO_WriteBit(GPIOA, GPIO_Pin_7, (BitAction)BitValue);
-//}
-
-//static uint8_t MySPI_R_MISO(void) {
-//	return GPIO_ReadInputDataBit(GPIOA, GPIO_Pin_6);
-//}
-
 void MySPI_Init(void) {
 	RCC_APB2PeriphClockCmd(RCC_APB2Periph_SPI1, ENABLE);
 	
@@ -35,7 +23,7 @@ void MySPI_Init(void) {
 	GPIO_Init(GPIOA, &GPIO_InitStructure);
 	
 	SPI_InitTypeDef SPI_InitSturcture;
-	SPI_InitSturcture.SPI_BaudRatePrescaler = SPI_BaudRatePrescaler_16;
+	SPI_InitSturcture.SPI_BaudRatePrescaler = SPI_BaudRatePrescaler_4;
 	SPI_InitSturcture.SPI_CPHA = SPI_CPHA_1Edge;
 	SPI_InitSturcture.SPI_CPOL = SPI_CPOL_Low;
 	SPI_InitSturcture.SPI_CRCPolynomial = 7;

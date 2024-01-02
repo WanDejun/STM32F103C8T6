@@ -18,7 +18,7 @@ void Serial_Init(void) {
 	GPIO_Init(GPIOA, &GPIO_InitStructure);
 	
 	USART_InitTypeDef USART_InitSturcture;
-	USART_InitSturcture.USART_BaudRate = 9600;
+	USART_InitSturcture.USART_BaudRate = 115200;
 	USART_InitSturcture.USART_HardwareFlowControl = USART_HardwareFlowControl_None;
 	USART_InitSturcture.USART_Mode = USART_Mode_Rx | USART_Mode_Tx;
 	USART_InitSturcture.USART_StopBits = USART_StopBits_1;
