@@ -26,7 +26,7 @@ for cnt in range(1, 2191):
 
     time.sleep(0.05)
 
-    if (cnt % 4 == 0 and cnt != 0):
+    if (cnt % 4 == 0 and cnt != 0): #等待stm32应答
         ser.read()
 
 
