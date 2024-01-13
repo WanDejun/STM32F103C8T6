@@ -4,7 +4,7 @@ Component: ARM Compiler 5.06 update 7 (build 960) Tool: armlink [4d3601]
 
 Section Cross References
 
-    system_stm32f10x.o(i.SetSysClock) refers to system_stm32f10x.o(i.SetSysClockTo36) for SetSysClockTo36
+    system_stm32f10x.o(i.SetSysClock) refers to system_stm32f10x.o(i.SetSysClockTo72) for SetSysClockTo72
     system_stm32f10x.o(i.SystemCoreClockUpdate) refers to system_stm32f10x.o(.data) for .data
     system_stm32f10x.o(i.SystemInit) refers to system_stm32f10x.o(i.SetSysClock) for SetSysClock
     startup_stm32f10x_md.o(STACK) refers (Special) to heapauxi.o(.text) for __use_two_region_memory
@@ -884,13 +884,13 @@ Image Symbol Table
     i.SVC_Handler                            0x08000688   Section        0  stm32f10x_it.o(i.SVC_Handler)
     i.SetSysClock                            0x0800068a   Section        0  system_stm32f10x.o(i.SetSysClock)
     SetSysClock                              0x0800068b   Thumb Code     4  system_stm32f10x.o(i.SetSysClock)
-    i.SetSysClockTo36                        0x08000690   Section        0  system_stm32f10x.o(i.SetSysClockTo36)
-    SetSysClockTo36                          0x08000691   Thumb Code   162  system_stm32f10x.o(i.SetSysClockTo36)
-    i.SysTick_Handler                        0x0800073c   Section        0  stm32f10x_it.o(i.SysTick_Handler)
-    i.SystemInit                             0x08000740   Section        0  system_stm32f10x.o(i.SystemInit)
-    i.UsageFault_Handler                     0x08000790   Section        0  stm32f10x_it.o(i.UsageFault_Handler)
-    i.main                                   0x08000794   Section        0  main.o(i.main)
-    .constdata                               0x080007e0   Section     1520  oled.o(.constdata)
+    i.SetSysClockTo72                        0x08000690   Section        0  system_stm32f10x.o(i.SetSysClockTo72)
+    SetSysClockTo72                          0x08000691   Thumb Code   166  system_stm32f10x.o(i.SetSysClockTo72)
+    i.SysTick_Handler                        0x08000740   Section        0  stm32f10x_it.o(i.SysTick_Handler)
+    i.SystemInit                             0x08000744   Section        0  system_stm32f10x.o(i.SystemInit)
+    i.UsageFault_Handler                     0x08000794   Section        0  stm32f10x_it.o(i.UsageFault_Handler)
+    i.main                                   0x08000798   Section        0  main.o(i.main)
+    .constdata                               0x080007e4   Section     1520  oled.o(.constdata)
     .data                                    0x20000000   Section       20  system_stm32f10x.o(.data)
     .bss                                     0x20000014   Section       96  libspace.o(.bss)
     HEAP                                     0x20000078   Section      512  startup_stm32f10x_md.o(HEAP)
@@ -1066,13 +1066,13 @@ Image Symbol Table
     PendSV_Handler                           0x08000669   Thumb Code     2  stm32f10x_it.o(i.PendSV_Handler)
     RCC_APB2PeriphClockCmd                   0x0800066d   Thumb Code    22  stm32f10x_rcc.o(i.RCC_APB2PeriphClockCmd)
     SVC_Handler                              0x08000689   Thumb Code     2  stm32f10x_it.o(i.SVC_Handler)
-    SysTick_Handler                          0x0800073d   Thumb Code     2  stm32f10x_it.o(i.SysTick_Handler)
-    SystemInit                               0x08000741   Thumb Code    64  system_stm32f10x.o(i.SystemInit)
-    UsageFault_Handler                       0x08000791   Thumb Code     2  stm32f10x_it.o(i.UsageFault_Handler)
-    main                                     0x08000795   Thumb Code    56  main.o(i.main)
-    OLED_F8x16                               0x080007e0   Data        1520  oled.o(.constdata)
-    Region$$Table$$Base                      0x08000dd0   Number         0  anon$$obj.o(Region$$Table)
-    Region$$Table$$Limit                     0x08000df0   Number         0  anon$$obj.o(Region$$Table)
+    SysTick_Handler                          0x08000741   Thumb Code     2  stm32f10x_it.o(i.SysTick_Handler)
+    SystemInit                               0x08000745   Thumb Code    64  system_stm32f10x.o(i.SystemInit)
+    UsageFault_Handler                       0x08000795   Thumb Code     2  stm32f10x_it.o(i.UsageFault_Handler)
+    main                                     0x08000799   Thumb Code    56  main.o(i.main)
+    OLED_F8x16                               0x080007e4   Data        1520  oled.o(.constdata)
+    Region$$Table$$Base                      0x08000dd4   Number         0  anon$$obj.o(Region$$Table)
+    Region$$Table$$Limit                     0x08000df4   Number         0  anon$$obj.o(Region$$Table)
     SystemCoreClock                          0x20000000   Data           4  system_stm32f10x.o(.data)
     AHBPrescTable                            0x20000004   Data          16  system_stm32f10x.o(.data)
     __libspace_start                         0x20000014   Data          96  libspace.o(.bss)
@@ -1086,9 +1086,9 @@ Memory Map of the image
 
   Image Entry point : 0x080000ed
 
-  Load Region LR_IROM1 (Base: 0x08000000, Size: 0x00000e04, Max: 0x00010000, ABSOLUTE)
+  Load Region LR_IROM1 (Base: 0x08000000, Size: 0x00000e08, Max: 0x00010000, ABSOLUTE)
 
-    Execution Region ER_IROM1 (Exec base: 0x08000000, Load base: 0x08000000, Size: 0x00000df0, Max: 0x00010000, ABSOLUTE)
+    Execution Region ER_IROM1 (Exec base: 0x08000000, Load base: 0x08000000, Size: 0x00000df4, Max: 0x00010000, ABSOLUTE)
 
     Exec Addr    Load Addr    Size         Type   Attr      Idx    E Section Name        Object
 
@@ -1179,24 +1179,24 @@ Memory Map of the image
     0x08000688   0x08000688   0x00000002   Code   RO         3538    i.SVC_Handler       stm32f10x_it.o
     0x0800068a   0x0800068a   0x00000004   Code   RO           17    i.SetSysClock       system_stm32f10x.o
     0x0800068e   0x0800068e   0x00000002   PAD
-    0x08000690   0x08000690   0x000000ac   Code   RO           18    i.SetSysClockTo36   system_stm32f10x.o
-    0x0800073c   0x0800073c   0x00000002   Code   RO         3539    i.SysTick_Handler   stm32f10x_it.o
-    0x0800073e   0x0800073e   0x00000002   PAD
-    0x08000740   0x08000740   0x00000050   Code   RO           20    i.SystemInit        system_stm32f10x.o
-    0x08000790   0x08000790   0x00000002   Code   RO         3540    i.UsageFault_Handler  stm32f10x_it.o
-    0x08000792   0x08000792   0x00000002   PAD
-    0x08000794   0x08000794   0x0000004c   Code   RO         3484    i.main              main.o
-    0x080007e0   0x080007e0   0x000005f0   Data   RO         3401    .constdata          oled.o
-    0x08000dd0   0x08000dd0   0x00000020   Data   RO         3756    Region$$Table       anon$$obj.o
+    0x08000690   0x08000690   0x000000b0   Code   RO           18    i.SetSysClockTo72   system_stm32f10x.o
+    0x08000740   0x08000740   0x00000002   Code   RO         3539    i.SysTick_Handler   stm32f10x_it.o
+    0x08000742   0x08000742   0x00000002   PAD
+    0x08000744   0x08000744   0x00000050   Code   RO           20    i.SystemInit        system_stm32f10x.o
+    0x08000794   0x08000794   0x00000002   Code   RO         3540    i.UsageFault_Handler  stm32f10x_it.o
+    0x08000796   0x08000796   0x00000002   PAD
+    0x08000798   0x08000798   0x0000004c   Code   RO         3484    i.main              main.o
+    0x080007e4   0x080007e4   0x000005f0   Data   RO         3401    .constdata          oled.o
+    0x08000dd4   0x08000dd4   0x00000020   Data   RO         3756    Region$$Table       anon$$obj.o
 
 
-    Execution Region RW_IRAM1 (Exec base: 0x20000000, Load base: 0x08000df0, Size: 0x00000678, Max: 0x00005000, ABSOLUTE)
+    Execution Region RW_IRAM1 (Exec base: 0x20000000, Load base: 0x08000df4, Size: 0x00000678, Max: 0x00005000, ABSOLUTE)
 
     Exec Addr    Load Addr    Size         Type   Attr      Idx    E Section Name        Object
 
-    0x20000000   0x08000df0   0x00000014   Data   RW           21    .data               system_stm32f10x.o
+    0x20000000   0x08000df4   0x00000014   Data   RW           21    .data               system_stm32f10x.o
     0x20000014        -       0x00000060   Zero   RW         3628    .bss                c_w.l(libspace.o)
-    0x20000074   0x08000e04   0x00000004   PAD
+    0x20000074   0x08000e08   0x00000004   PAD
     0x20000078        -       0x00000200   Zero   RW          131    HEAP                startup_stm32f10x_md.o
     0x20000278        -       0x00000400   Zero   RW          130    STACK               startup_stm32f10x_md.o
 
@@ -1218,10 +1218,10 @@ Image component sizes
        178          0          0          0          0      10896   stm32f10x_gpio.o
         18          0          0          0          0       3578   stm32f10x_it.o
         28          6          0          0          0        541   stm32f10x_rcc.o
-       256         26          0         20          0       2129   system_stm32f10x.o
+       260         26          0         20          0       2129   system_stm32f10x.o
 
     ----------------------------------------------------------------------
-      1502        108       1788         20       1536     240709   Object Totals
+      1506        108       1788         20       1536     240709   Object Totals
          0          0         32          0          0          0   (incl. Generated)
         12          0          0          0          0          0   (incl. Padding)
 
@@ -1270,15 +1270,15 @@ Image component sizes
 
       Code (inc. data)   RO Data    RW Data    ZI Data      Debug   
 
-      1780        124       1788         20       1636     239781   Grand Totals
-      1780        124       1788         20       1636     239781   ELF Image Totals
-      1780        124       1788         20          0          0   ROM Totals
+      1784        124       1788         20       1636     239781   Grand Totals
+      1784        124       1788         20       1636     239781   ELF Image Totals
+      1784        124       1788         20          0          0   ROM Totals
 
 ==============================================================================
 
-    Total RO  Size (Code + RO Data)                 3568 (   3.48kB)
+    Total RO  Size (Code + RO Data)                 3572 (   3.49kB)
     Total RW  Size (RW Data + ZI Data)              1656 (   1.62kB)
-    Total ROM Size (Code + RO Data + RW Data)       3588 (   3.50kB)
+    Total ROM Size (Code + RO Data + RW Data)       3592 (   3.51kB)
 
 ==============================================================================
 

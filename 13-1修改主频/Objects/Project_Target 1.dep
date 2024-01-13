@@ -4,7 +4,7 @@ F (.\Start\core_cm3.c)(0x4C0C587E)(--gnu -c --cpu Cortex-M3 -g -O1 --apcs=interw
 I (D:\Keil5\ARM\ARM_ Compiler_ 5.06u7\include\stdint.h)(0x5E8E3CC2)
 F (.\Start\core_cm3.h)(0x4D523B58)()
 F (.\Start\stm32f10x.h)(0x4D783CB4)()
-F (.\Start\system_stm32f10x.c)(0x658D9EC2)(--gnu -c --cpu Cortex-M3 -g -O1 --apcs=interwork --split_sections -I .\Start -I .\User -I .\Library -I .\System -I .\Hardware-ID:\Keil5\ARM\Packs\Keil\STM32F1xx_DFP\2.2.0\Device\Include-D__UVISION_VERSION="538" -DSTM32F10X_MD -DUSE_STDPERIPH_DRIVER-o .\objects\system_stm32f10x.o --omf_browse .\objects\system_stm32f10x.crf --depend .\objects\system_stm32f10x.d)
+F (.\Start\system_stm32f10x.c)(0x659A55C9)(--gnu -c --cpu Cortex-M3 -g -O1 --apcs=interwork --split_sections -I .\Start -I .\User -I .\Library -I .\System -I .\Hardware-ID:\Keil5\ARM\Packs\Keil\STM32F1xx_DFP\2.2.0\Device\Include-D__UVISION_VERSION="538" -DSTM32F10X_MD -DUSE_STDPERIPH_DRIVER-o .\objects\system_stm32f10x.o --omf_browse .\objects\system_stm32f10x.crf --depend .\objects\system_stm32f10x.d)
 I (Start\stm32f10x.h)(0x4D783CB4)
 I (Start\core_cm3.h)(0x4D523B58)
 I (D:\Keil5\ARM\ARM_ Compiler_ 5.06u7\include\stdint.h)(0x5E8E3CC2)
