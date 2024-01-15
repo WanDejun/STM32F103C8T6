@@ -57,15 +57,6 @@ void OLED_DrawArc(uint8_t X, uint8_t Y, uint8_t Radius, int16_t StartAngle, int1
 
 /*********************函数声明*/
 
-void OLED_MenuAdd(char* str);
-void OLED_MenuInit(void);
-void OLED_MenuClear(void);
-void OLED_MenuDownRoll_1Px(void);
-void OLED_MenuUpRoll_1Px(void);
-void OLED_MenuSelectDown(void);
-void OLED_MenuSelectUp(void);
-
-
 #endif
 
 

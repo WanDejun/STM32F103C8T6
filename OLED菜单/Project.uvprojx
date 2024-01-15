@@ -699,6 +699,16 @@
               <FileType>5</FileType>
               <FilePath>.\Hardware\Encoder.h</FilePath>
             </File>
+            <File>
+              <FileName>LED.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\Hardware\LED.c</FilePath>
+            </File>
+            <File>
+              <FileName>LED.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\Hardware\LED.h</FilePath>
+            </File>
           </Files>
         </Group>
         <Group>
@@ -723,6 +733,26 @@
               <FileName>stm32f10x_it.h</FileName>
               <FileType>5</FileType>
               <FilePath>.\User\stm32f10x_it.h</FilePath>
+            </File>
+            <File>
+              <FileName>Menu.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\User\Menu.c</FilePath>
+            </File>
+            <File>
+              <FileName>Menu.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\User\Menu.h</FilePath>
+            </File>
+            <File>
+              <FileName>MenuControler.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\User\MenuControler.c</FilePath>
+            </File>
+            <File>
+              <FileName>MenuControler.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\User\MenuControler.h</FilePath>
             </File>
           </Files>
         </Group>
