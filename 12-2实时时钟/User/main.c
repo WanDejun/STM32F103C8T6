@@ -33,6 +33,6 @@ int main(void) {
 		
 		OLED_ShowNum(3, 6, RTC_GetCounter(), 10);
 		
-		//OLED_ShowNum(4, 6, RTC_GetDivider(), 10);
+		OLED_ShowNum(4, 6, RTC_GetDivider(), 10);
 	}
 }
