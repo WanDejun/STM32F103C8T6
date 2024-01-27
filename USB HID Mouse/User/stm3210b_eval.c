@@ -1,0 +1,61 @@
+#include "stm3210b_eval.h"
+
+GPIO_TypeDef* BUTTON_PORT[BUTTONn] = {	CLICK_L_BUTTON_GPIO_PORT, CLICK_R_BUTTON_GPIO_PORT, 
+										CLICK_M_BUTTON_GPIO_PORT, RIGHT_BUTTON_GPIO_PORT,
+										LEFT_BUTTON_GPIO_PORT, UP_BUTTON_GPIO_PORT,
+										DOWN_BUTTON_GPIO_PORT, ROLL_UP_BUTTON_GPIO_PORT,
+										ROLL_DOWN_BUTTON_GPIO_PORT }; 
+
+const uint16_t BUTTON_PIN[BUTTONn] = {	CLICK_L_BUTTON_PIN, CLICK_R_BUTTON_PIN, 
+										CLICK_M_BUTTON_PIN, RIGHT_BUTTON_PIN,
+										LEFT_BUTTON_PIN, UP_BUTTON_PIN,
+										DOWN_BUTTON_PIN, ROLL_UP_BUTTON_PIN,
+										ROLL_DOWN_BUTTON_PIN }; 
+
+const uint32_t BUTTON_CLK[BUTTONn] = {	CLICK_L_BUTTON_GPIO_CLK, CLICK_R_BUTTON_GPIO_CLK,
+										CLICK_M_BUTTON_GPIO_CLK, RIGHT_BUTTON_GPIO_CLK,
+										LEFT_BUTTON_GPIO_CLK, UP_BUTTON_GPIO_CLK,
+										DOWN_BUTTON_GPIO_CLK, ROLL_UP_BUTTON_GPIO_CLK,
+										ROLL_DOWN_BUTTON_GPIO_CLK };
+
+const uint16_t BUTTON_EXTI_LINE[BUTTONn] = { CLICK_L_BUTTON_EXTI_LINE,
+											 CLICK_R_BUTTON_EXTI_LINE, 
+											 CLICK_M_BUTTON_EXTI_LINE,
+											 RIGHT_BUTTON_EXTI_LINE,
+											 LEFT_BUTTON_EXTI_LINE,
+											 UP_BUTTON_EXTI_LINE,
+											 DOWN_BUTTON_EXTI_LINE,
+											 ROLL_UP_BUTTON_EXTI_LINE,
+											 ROLL_DOWN_BUTTON_EXTI_LINE };
+
+const uint16_t BUTTON_PORT_SOURCE[BUTTONn] = { CLICK_L_BUTTON_EXTI_PORT_SOURCE,
+                                               CLICK_R_BUTTON_EXTI_PORT_SOURCE, 
+                                               CLICK_M_BUTTON_EXTI_PORT_SOURCE,
+                                               RIGHT_BUTTON_EXTI_PORT_SOURCE,
+                                               LEFT_BUTTON_EXTI_PORT_SOURCE,
+                                               UP_BUTTON_EXTI_PORT_SOURCE,
+                                               DOWN_BUTTON_EXTI_PORT_SOURCE,
+                                               ROLL_UP_BUTTON_EXTI_PORT_SOURCE,
+											   ROLL_DOWN_BUTTON_EXTI_PORT_SOURCE };
+								 
+const uint16_t BUTTON_PIN_SOURCE[BUTTONn] = { CLICK_L_BUTTON_EXTI_PIN_SOURCE,
+											  CLICK_R_BUTTON_EXTI_PIN_SOURCE, 
+											  CLICK_M_BUTTON_EXTI_PIN_SOURCE,
+											  RIGHT_BUTTON_EXTI_PIN_SOURCE,
+											  LEFT_BUTTON_EXTI_PIN_SOURCE,
+											  UP_BUTTON_EXTI_PIN_SOURCE,
+											  DOWN_BUTTON_EXTI_PIN_SOURCE,
+											  ROLL_UP_BUTTON_EXTI_PIN_SOURCE,
+											  ROLL_DOWN_BUTTON_EXTI_PIN_SOURCE }; 
+
+const uint16_t BUTTON_IRQn[BUTTONn] = {	CLICK_L_BUTTON_EXTI_IRQn, CLICK_R_BUTTON_EXTI_IRQn, 
+										CLICK_M_BUTTON_EXTI_IRQn, RIGHT_BUTTON_EXTI_IRQn,
+										LEFT_BUTTON_EXTI_IRQn, UP_BUTTON_EXTI_IRQn,
+										DOWN_BUTTON_EXTI_IRQn, ROLL_UP_BUTTON_EXTI_IRQn,
+										ROLL_DOWN_BUTTON_EXTI_IRQn };
+
+uint32_t GetKeyState(Button_TypeDef Button)
+{
+  return GPIO_ReadInputDataBit(BUTTON_PORT[Button], BUTTON_PIN[Button]);
+}
+

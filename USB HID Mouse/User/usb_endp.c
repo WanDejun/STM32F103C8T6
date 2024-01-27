@@ -1,3 +1,4 @@
+// 管理端点回调函数
 #include "hw_config.h"
 /* Private typedef -----------------------------------------------------------*/
 /* Private define ------------------------------------------------------------*/
@@ -14,8 +15,7 @@ extern __IO uint8_t PrevXferComplete;
 * Output         : None.
 * Return         : None.
 *******************************************************************************/
-void EP1_IN_Callback(void)
-{
+void EP1_IN_Callback(void) {
   /* Set the transfer complete token to inform upper layer that the current 
   transfer has been complete */
   PrevXferComplete = 1; 

@@ -1,3 +1,4 @@
+// 中断管理函数
 #include "usb_istr.h"
 /* Private typedef -----------------------------------------------------------*/
 /* Private define ------------------------------------------------------------*/
@@ -123,8 +124,7 @@ void USB_Istr(void)
 #endif
   /*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*/
 #if (IMR_MSK & ISTR_SOF)
-  if (wIstr & ISTR_SOF & wInterrupt_Mask)
-  {
+  if (wIstr & ISTR_SOF & wInterrupt_Mask) {
     _SetISTR((uint16_t)CLR_SOF);
     bIntPackSOF++;
 
@@ -145,15 +145,15 @@ void USB_Istr(void)
       /* increment ESOF counter */
       esof_counter++;
       
-      /* test if we enter in ESOF more than 3 times with FSUSP =0 and RXDP =1=>> possible missing SUSP flag*/
+      /* test if we enter in ESOF more than 3 times with FSUSP = 0 and RXDP = 1 =>> possible missing SUSP flag*/
       if ((esof_counter > 3) && ((_GetCNTR() & CNTR_FSUSP) == 0))
       {           
         /* this a sequence to apply a force RESET*/
       
-        /*Store CNTR value */
+        /* Store CNTR value */
         wCNTR = _GetCNTR(); 
       
-        /*Store endpoints registers status */
+        /* Store endpoints registers status */
         for (i=0;i<8;i++) EP[i] = _GetENDPOINT(i);
       
         /*apply FRES */
@@ -170,7 +170,7 @@ void USB_Istr(void)
         /* clear RESET flag in ISTR */
         _SetISTR((uint16_t)CLR_RESET);
    
-       /*restore Enpoints*/
+       /* restore Enpoints */
         for (i = 0; i < 8; i++)
         _SetENDPOINT(i, EP[i]);
       

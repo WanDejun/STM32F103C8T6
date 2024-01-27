@@ -1,10 +1,10 @@
 /**
   ******************************************************************************
-  * @file    platform_config.h
+  * @file    hw_config.h
   * @author  MCD Application Team
   * @version V4.1.0
   * @date    26-May-2017
-  * @brief   Evaluation board specific configuration file.
+  * @brief   Hardware Configuration & Setup
   ******************************************************************************
   * @attention
   *
@@ -37,42 +37,33 @@
 
 
 /* Define to prevent recursive inclusion -------------------------------------*/
-#ifndef __PLATFORM_CONFIG_H
-#define __PLATFORM_CONFIG_H
+#ifndef __HW_CONFIG_H
+#define __HW_CONFIG_H
 
 /* Includes ------------------------------------------------------------------*/
-#include "stm3210b_eval.h"
-
+#include "platform_config.h"
+#include "usb_type.h"
+#include "usb_lib.h"
+#include "usb_desc.h"
+#include "usb_pwr.h"
+#include "usb_istr.h"
 /* Exported types ------------------------------------------------------------*/
 /* Exported constants --------------------------------------------------------*/
-
-/* Define if Low power mode is enabled; it allows entering the device into 
-   STOP mode following USB Suspend event, and wakes up after the USB wakeup
-   event is received. */
-//#define USB_LOW_PWR_MGMT_SUPPORT
-     
-/*Unique Devices IDs register set*/
-
-#define         ID1          (0x1FFFF7E8)
-#define         ID2          (0x1FFFF7EC)
-#define         ID3          (0x1FFFF7F0)
-
-/* Define the STM32F10x hardware depending on the used evaluation board */
-#ifdef USE_STM3210B_EVAL
-  #define USB_DISCONNECT                      GPIOD  
-  #define USB_DISCONNECT_PIN                  GPIO_Pin_9
-  
-  #define RCC_APB2Periph_GPIO_DISCONNECT      RCC_APB2Periph_GPIOD
-
-  #define RCC_APB2Periph_ALLGPIO              (RCC_APB2Periph_GPIOA \
-                                               | RCC_APB2Periph_GPIOB \
-                                               | RCC_APB2Periph_GPIOC)
-#endif /* USE_STM3210B_EVAL */
-
 /* Exported macro ------------------------------------------------------------*/
+/* Exported define -----------------------------------------------------------*/
+#define CURSOR_STEP     5
+#define ROLLER_STEP     1
+
 /* Exported functions ------------------------------------------------------- */
+void Set_System(void);
+void Set_USBClock(void);
+void GPIO_AINConfig(void);
+void Enter_LowPowerMode(void);
+void Leave_LowPowerMode(void);
+void USB_Interrupts_Config(void);
+void USB_Cable_Config (FunctionalState NewState);
+void Joystick_Send(uint8_t Keys);
+uint8_t JoyState(void);
+void Get_SerialNum(void);
 
-#endif /* __PLATFORM_CONFIG_H */
-
-/************************ (C) COPYRIGHT STMicroelectronics *****END OF FILE****/
-
+#endif  /*__HW_CONFIG_H*/

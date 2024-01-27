@@ -8,8 +8,9 @@ extern __IO uint8_t PrevXferComplete;
 
 /* Private function prototypes -----------------------------------------------*/
 static void IntToUnicode (uint32_t value , uint8_t *pbuf , uint8_t len);
-static void Delay(__IO uint32_t nTime);
 /* Private functions ---------------------------------------------------------*/
+
+static __IO uint8_t Mouse_Buffer[4] = {0, 0, 0, 0};
 
 /**
   * Function Name  : Set_System
@@ -36,8 +37,16 @@ void Set_System(void) {
 	GPIO_InitStructure.GPIO_Speed = GPIO_Speed_50MHz;
 	GPIO_InitStructure.GPIO_Mode = GPIO_Mode_AF_PP;
 	GPIO_Init(GPIOA, &GPIO_InitStructure);
-
-	GPIO_InitStructure.GPIO_Pin = GPIO_Pin_0 | GPIO_Pin_1 | GPIO_Pin_2 | GPIO_Pin_3;
+	
+	// 初始化按键(全在GPIOA口)
+	uint8_t i;
+	uint16_t GPIO_Pin_AllKey = 0;
+	extern const uint16_t BUTTON_PIN[BUTTONn];
+	
+	for (i = 0; i < BUTTONn; i++) {
+		GPIO_Pin_AllKey |= BUTTON_PIN[i];
+	}
+	GPIO_InitStructure.GPIO_Pin = GPIO_Pin_AllKey;
 	GPIO_InitStructure.GPIO_Speed = GPIO_Speed_50MHz;
 	GPIO_InitStructure.GPIO_Mode = GPIO_Mode_IPU;
 	GPIO_Init(GPIOA, &GPIO_InitStructure);
@@ -108,13 +117,13 @@ void USB_Interrupts_Config(void)
   */
 void USB_Cable_Config (FunctionalState NewState) { 
 	if (NewState != DISABLE) {
-	GPIO_ResetBits(USB_DISCONNECT, USB_DISCONNECT_PIN);
+		GPIO_ResetBits(USB_DISCONNECT, USB_DISCONNECT_PIN);
 	}
 	else {
-	GPIO_SetBits(USB_DISCONNECT, USB_DISCONNECT_PIN);
+		GPIO_SetBits(USB_DISCONNECT, USB_DISCONNECT_PIN);
 	}
 }
-#if !defined (USE_NUCLEO)
+
 /**
   * Function Name : JoyState.
   * Description   : Decodes the Joystick direction.
@@ -122,28 +131,109 @@ void USB_Cable_Config (FunctionalState NewState) {
   * Output        : None.
   * Return value  : The direction value.
   */
-uint8_t JoyState(void)
-{
-   /* "right" key is pressed */
-   if (!STM_EVAL_PBGetState(Button_RIGHT)) {
-       return JOY_RIGHT;
-   }
-   /* "left" key is pressed */
-   if (!STM_EVAL_PBGetState(Button_LEFT)) {
-       return JOY_LEFT;
-   }
-   /* "up" key is pressed */
-   if (!STM_EVAL_PBGetState(Button_UP)) {
-       return JOY_UP;
-   }
-   /* "down" key is pressed */
-   if (!STM_EVAL_PBGetState(Button_DOWN)) {
-       return JOY_DOWN;
-   }
-   /* No key is pressed */
+uint8_t JoyState(void) {
+	uint8_t t;
+	for (t = 1; t < 4; t++) {
+		Mouse_Buffer[t] = 0;
+	}
+	
+	t = 0; // use as flag to show if any key was pressed
+	
+	/**	
+	* @brief Mouse move
+	**/
+	/* "right" key is pressed */
+	if (!GetKeyState(Button_RIGHT)) {
+		Mouse_Buffer[1] += CURSOR_STEP;
+		t |= 1;
+	}
+	/* "left" key is pressed */
+	if (!GetKeyState(Button_LEFT)) {
+		Mouse_Buffer[1] -= CURSOR_STEP;
+		t |= 1;
+	}
+	/* "up" key is pressed */
+	if (!GetKeyState(Button_UP)) {
+		Mouse_Buffer[2] -= CURSOR_STEP;
+		t |= 1;
+	}
+	/* "down" key is pressed */
+	if (!GetKeyState(Button_DOWN)) {
+		Mouse_Buffer[2] += CURSOR_STEP;
+		t |= 1;
+	}
+	
+	/**	
+	* @brief Mouse Roll
+	**/
+	/* "Roll_up" key is pressed */
+	if (!GetKeyState(Button_ROLL_UP)) {
+		Mouse_Buffer[3] += ROLLER_STEP;
+		t |= 1;
+	}
+	/* "Roll_up" key is pressed */
+	if (!GetKeyState(Button_ROLL_DOWN)) {
+		Mouse_Buffer[3] -= ROLLER_STEP;
+		t |= 1;
+	}
+	
+	/**	
+	* @brief Mouse CLICK
+	**/
+	
+	
+	// 连点器
+//	if (!GetKeyState(Button_CLICK_L)) {
+//		if (!(Mouse_Buffer[0] & 1)) {
+//			Mouse_Buffer[0] |= 1;
+//		}
+//		else {
+//			Mouse_Buffer[0] &= (~1);
+//		}
+//		t |= 1;
+//	}
+	
+	/*  "Left Click" key is pressed */
+	if (!GetKeyState(Button_CLICK_L)) { 
+		if (!(Mouse_Buffer[0] & 1)) {
+			Mouse_Buffer[0] |= 1;
+			t |= 1;
+		}
+	}
 	else {
-		return 0;
-	} 
+		if (Mouse_Buffer[0] & 1) {
+			Mouse_Buffer[0] &= (~1);
+			t |= 1;
+		}
+	}
+	/*  "Right Click" key is pressed */
+	if (!GetKeyState(Button_CLICK_R)) { 
+		if (!(Mouse_Buffer[0] & 2)) {
+			Mouse_Buffer[0] |= 2;
+			t |= 1;
+		}
+	}
+	else {
+		if (Mouse_Buffer[0] & 2) {
+			Mouse_Buffer[0] &= (~2);
+			t |= 1;
+		}
+	}
+	/*  "Middle Click" key is pressed */
+	if (!GetKeyState(Button_CLICK_M)) { 
+		if (!(Mouse_Buffer[0] & 4)) {
+			Mouse_Buffer[0] |= 4;
+			t |= 1;
+		}
+	}
+	else {
+		if (Mouse_Buffer[0] & 4) {
+			Mouse_Buffer[0] &= (~4);
+			t |= 1;
+		}
+	}
+	
+	return t;
 }
 
 /**
@@ -154,112 +244,14 @@ uint8_t JoyState(void)
   * Return value  : None.
   */
 void Joystick_Send(uint8_t Keys) {
-	uint8_t Mouse_Buffer[4] = {0, 0, 0, 0};
-	int8_t X = 0, Y = 0;
-  
-	switch (Keys) {
-	case JOY_LEFT:
-		X -= CURSOR_STEP;
-		break;
-	case JOY_RIGHT:
-		X += CURSOR_STEP;
-		break;
-	case JOY_UP:
-		Y -= CURSOR_STEP;
-		break;
-	case JOY_DOWN:
-		Y += CURSOR_STEP;
-		break;
-	default:
-		return;
-	}
-	/* prepare buffer to send */
-	Mouse_Buffer[1] = X;
-	Mouse_Buffer[2] = Y;
-
 	/* Reset the control token to inform upper layer that a transfer is ongoing */
 	PrevXferComplete = 0;
 
 	/* Copy mouse position info in ENDP1 Tx Packet Memory Area*/
-	USB_SIL_Write(EP1_IN, Mouse_Buffer, 4);
+	USB_SIL_Write(EP1_IN, (uint8_t*)Mouse_Buffer, 4);
 
 	/* Enable endpoint for transmission */
 	SetEPTxValid(ENDP1);
-}
-#endif /* USE_NUCLEO */
-/**
-  * Function Name  : Joy_Emul.
-  * Description    : Gets Pointer Data
-  * Input          : None.
-  * Output         : None.
-  * Return         : None.
-  */
-void Joy_Emul(void)
-{
-  uint8_t Mouse_Buffer[4] = {0, 0, 0, 0};
-  uint8_t X = 0, Y = 0; 
-  static uint8_t Sens = 0;
-  static uint8_t Step = 0;
-  
-  Delay(0x0FFFF);
-  
-  if (Step == 35)
-  {
-    Step = 0;
-    Sens++;
-  }
-  
-  if(Sens == 0)
-  {
-    X = Step++;
-    Y = 0;
-  }
-  
-  if(Sens == 1)
-  {
-    Y = Step++;
-    X = 0;
-  }      
-  if (Sens==2)
-  {
-    X = 256 - Step++;
-    Y = 0;
-  } 
-  
-  if (Sens == 3)
-  {
-    Y = 256 - Step++;
-    X = 0;
-  }
-  
-  if (Sens == 4)
-  { 
-    Sens = 0;
-    X = 0;
-    Y = 0;
-  }
-  
-  Mouse_Buffer[0] = 0;
-  Mouse_Buffer[1] = X;
-  Mouse_Buffer[2] = Y;
-  Mouse_Buffer[3] = 0;
-  
-  /* Reset the control token to inform upper layer that a transfer is ongoing */
-  PrevXferComplete = 0;
-  /* Copy mouse position info in ENDP1 Tx Packet Memory Area*/
-  USB_SIL_Write(EP1_IN, Mouse_Buffer, 4);
-  /* Enable endpoint for transmission */
-  SetEPTxValid(ENDP1);
-}
-
-/**
-  * @brief  Inserts a delay time.
-  * @param  nTime: specifies the delay time length, in milliseconds.
-  * @retval None
-  */
-static void Delay(__IO uint32_t nTime)
-{
-  for(; nTime != 0; nTime--);
 }
 
 /**
