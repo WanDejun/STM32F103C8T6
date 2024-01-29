@@ -1,6 +1,7 @@
-/Objects
-/Objects/
-/DebugConfig
+Objects
+Objects/
+DebugConfig
+DebugConfig/
 
 *.o
 *.d
