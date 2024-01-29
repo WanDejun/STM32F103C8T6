@@ -9,12 +9,13 @@ typedef enum {
 	KEY_a_A = 0,
 	KEY_b_B = 1,
 	KEY_c_C = 2,
-	KEY_d_D = 3
+	KEY_d_D = 3,
+	KEY_ALL = 4
 } KEY_TypeDef;
 
 #define USE_STM3210B_EVAL
 
-#define KEYn                       	4
+#define KEYn                       	5
 
 /**
  * 	@brief KEY_a_A
@@ -56,6 +57,16 @@ typedef enum {
 #define KEY_d_D_EXTI_PORT_SOURCE   	GPIO_PortSourceGPIOA
 #define KEY_d_D_EXTI_PIN_SOURCE    	GPIO_PinSource3
 #define KEY_d_D_EXTI_IRQn          	EXTI3_IRQn
+/**
+ * 	@brief KEY_ALL
+ */
+#define KEY_ALL_PIN                	GPIO_Pin_4
+#define KEY_ALL_GPIO_PORT          	GPIOA
+#define KEY_ALL_GPIO_CLK           	RCC_APB2Periph_GPIOA
+#define KEY_ALL_EXTI_LINE          	EXTI_Line4
+#define KEY_ALL_EXTI_PORT_SOURCE   	GPIO_PortSourceGPIOA
+#define KEY_ALL_EXTI_PIN_SOURCE    	GPIO_PinSource4
+#define KEY_ALL_EXTI_IRQn          	EXTI4_IRQn
 
 uint32_t GetKeyState(KEY_TypeDef Button);
    

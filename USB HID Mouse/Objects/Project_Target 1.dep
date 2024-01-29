@@ -841,8 +841,8 @@ I (.\Library\misc.h)(0x65B4DBDF)
 I (Hardware\OLED_Font.h)(0x65B4DBDF)
 F (.\Hardware\OLED.h)(0x65B4DBDF)()
 F (.\Hardware\OLED_Font.h)(0x65B4DBDF)()
-F (.\User\main.c)(0x65B4DBDF)(--gnu -c --cpu Cortex-M3 -g -O1 --apcs=interwork --split_sections -I .\Start -I .\User -I .\Library -I .\System -I .\Hardware -I .\Library\STM32_USB-FS-Device_Driver\inc -I .\Library\STM32_USB-FS-Device_Driver\src-ID:\Keil5\ARM\Packs\Keil\STM32F1xx_DFP\2.2.0\Device\Include-D__UVISION_VERSION="538" -DSTM32F10X_MD -DUSE_STDPERIPH_DRIVER-o .\objects\main.o --omf_browse .\objects\main.crf --depend .\objects\main.d)
-I (User\hw_config.h)(0x65B4DBDF)
+F (.\User\main.c)(0x65B7699E)(--gnu -c --cpu Cortex-M3 -g -O1 --apcs=interwork --split_sections -I .\Start -I .\User -I .\Library -I .\System -I .\Hardware -I .\Library\STM32_USB-FS-Device_Driver\inc -I .\Library\STM32_USB-FS-Device_Driver\src-ID:\Keil5\ARM\Packs\Keil\STM32F1xx_DFP\2.2.0\Device\Include-D__UVISION_VERSION="538" -DSTM32F10X_MD -DUSE_STDPERIPH_DRIVER-o .\objects\main.o --omf_browse .\objects\main.crf --depend .\objects\main.d)
+I (User\hw_config.h)(0x65B7699E)
 I (User\platform_config.h)(0x65B4DBDF)
 I (User\stm3210b_eval.h)(0x65B4DBDF)
 I (.\Start\stm32f10x.h)(0x65B4DBDF)
@@ -877,7 +877,7 @@ I (User\stm32_eval_legacy.h)(0x65B4DBDF)
 I (.\Library\STM32_USB-FS-Device_Driver\inc\usb_type.h)(0x65B4DBDF)
 I (.\User\usb_conf.h)(0x65B4DBDF)
 I (.\Library\STM32_USB-FS-Device_Driver\inc\usb_lib.h)(0x65B4DBDF)
-I (.\User\hw_config.h)(0x65B4DBDF)
+I (.\User\hw_config.h)(0x65B7699E)
 I (.\Library\STM32_USB-FS-Device_Driver\inc\usb_regs.h)(0x65B4DBDF)
 I (.\Library\STM32_USB-FS-Device_Driver\inc\usb_def.h)(0x65B4DBDF)
 I (.\Library\STM32_USB-FS-Device_Driver\inc\usb_core.h)(0x65B4DBDF)
@@ -894,7 +894,7 @@ F (.\User\stm32f10x_it.c)(0x65B4DBDF)(--gnu -c --cpu Cortex-M3 -g -O1 --apcs=int
 I (User\usb_istr.h)(0x65B4DBDF)
 I (User\usb_conf.h)(0x65B4DBDF)
 I (.\Library\STM32_USB-FS-Device_Driver\inc\usb_lib.h)(0x65B4DBDF)
-I (.\User\hw_config.h)(0x65B4DBDF)
+I (.\User\hw_config.h)(0x65B7699E)
 I (.\User\platform_config.h)(0x65B4DBDF)
 I (.\User\stm3210b_eval.h)(0x65B4DBDF)
 I (.\Start\stm32f10x.h)(0x65B4DBDF)
@@ -939,8 +939,8 @@ I (.\Library\STM32_USB-FS-Device_Driver\inc\usb_mem.h)(0x65B4DBDF)
 I (.\Library\STM32_USB-FS-Device_Driver\inc\usb_int.h)(0x65B4DBDF)
 I (User\usb_prop.h)(0x65B4DBDF)
 F (.\User\stm32f10x_it.h)(0x65B4DBDF)()
-F (.\User\hw_config.c)(0x65B4DCA3)(--gnu -c --cpu Cortex-M3 -g -O1 --apcs=interwork --split_sections -I .\Start -I .\User -I .\Library -I .\System -I .\Hardware -I .\Library\STM32_USB-FS-Device_Driver\inc -I .\Library\STM32_USB-FS-Device_Driver\src-ID:\Keil5\ARM\Packs\Keil\STM32F1xx_DFP\2.2.0\Device\Include-D__UVISION_VERSION="538" -DSTM32F10X_MD -DUSE_STDPERIPH_DRIVER-o .\objects\hw_config.o --omf_browse .\objects\hw_config.crf --depend .\objects\hw_config.d)
-I (User\hw_config.h)(0x65B4DBDF)
+F (.\User\hw_config.c)(0x65B76C8B)(--gnu -c --cpu Cortex-M3 -g -O1 --apcs=interwork --split_sections -I .\Start -I .\User -I .\Library -I .\System -I .\Hardware -I .\Library\STM32_USB-FS-Device_Driver\inc -I .\Library\STM32_USB-FS-Device_Driver\src-ID:\Keil5\ARM\Packs\Keil\STM32F1xx_DFP\2.2.0\Device\Include-D__UVISION_VERSION="538" -DSTM32F10X_MD -DUSE_STDPERIPH_DRIVER-o .\objects\hw_config.o --omf_browse .\objects\hw_config.crf --depend .\objects\hw_config.d)
+I (User\hw_config.h)(0x65B7699E)
 I (User\platform_config.h)(0x65B4DBDF)
 I (User\stm3210b_eval.h)(0x65B4DBDF)
 I (.\Start\stm32f10x.h)(0x65B4DBDF)
@@ -975,7 +975,7 @@ I (User\stm32_eval_legacy.h)(0x65B4DBDF)
 I (.\Library\STM32_USB-FS-Device_Driver\inc\usb_type.h)(0x65B4DBDF)
 I (.\User\usb_conf.h)(0x65B4DBDF)
 I (.\Library\STM32_USB-FS-Device_Driver\inc\usb_lib.h)(0x65B4DBDF)
-I (.\User\hw_config.h)(0x65B4DBDF)
+I (.\User\hw_config.h)(0x65B7699E)
 I (.\Library\STM32_USB-FS-Device_Driver\inc\usb_regs.h)(0x65B4DBDF)
 I (.\Library\STM32_USB-FS-Device_Driver\inc\usb_def.h)(0x65B4DBDF)
 I (.\Library\STM32_USB-FS-Device_Driver\inc\usb_core.h)(0x65B4DBDF)
@@ -987,13 +987,13 @@ I (User\usb_desc.h)(0x65B4DBDF)
 I (User\usb_pwr.h)(0x65B4DBDF)
 I (User\usb_istr.h)(0x65B4DBDF)
 I (User\usb_prop.h)(0x65B4DBDF)
-F (.\User\hw_config.h)(0x65B4DBDF)()
+F (.\User\hw_config.h)(0x65B7699E)()
 F (.\User\platform_config.h)(0x65B4DBDF)()
 F (.\User\usb_conf.h)(0x65B4DBDF)()
-F (.\User\usb_desc.c)(0x65B4DBDF)(--gnu -c --cpu Cortex-M3 -g -O1 --apcs=interwork --split_sections -I .\Start -I .\User -I .\Library -I .\System -I .\Hardware -I .\Library\STM32_USB-FS-Device_Driver\inc -I .\Library\STM32_USB-FS-Device_Driver\src-ID:\Keil5\ARM\Packs\Keil\STM32F1xx_DFP\2.2.0\Device\Include-D__UVISION_VERSION="538" -DSTM32F10X_MD -DUSE_STDPERIPH_DRIVER-o .\objects\usb_desc.o --omf_browse .\objects\usb_desc.crf --depend .\objects\usb_desc.d)
+F (.\User\usb_desc.c)(0x65B76E55)(--gnu -c --cpu Cortex-M3 -g -O1 --apcs=interwork --split_sections -I .\Start -I .\User -I .\Library -I .\System -I .\Hardware -I .\Library\STM32_USB-FS-Device_Driver\inc -I .\Library\STM32_USB-FS-Device_Driver\src-ID:\Keil5\ARM\Packs\Keil\STM32F1xx_DFP\2.2.0\Device\Include-D__UVISION_VERSION="538" -DSTM32F10X_MD -DUSE_STDPERIPH_DRIVER-o .\objects\usb_desc.o --omf_browse .\objects\usb_desc.crf --depend .\objects\usb_desc.d)
 I (User\usb_desc.h)(0x65B4DBDF)
 I (.\Library\STM32_USB-FS-Device_Driver\inc\usb_lib.h)(0x65B4DBDF)
-I (.\User\hw_config.h)(0x65B4DBDF)
+I (.\User\hw_config.h)(0x65B7699E)
 I (.\User\platform_config.h)(0x65B4DBDF)
 I (.\User\stm3210b_eval.h)(0x65B4DBDF)
 I (.\Start\stm32f10x.h)(0x65B4DBDF)
@@ -1040,7 +1040,7 @@ I (.\Library\STM32_USB-FS-Device_Driver\inc\usb_mem.h)(0x65B4DBDF)
 I (.\Library\STM32_USB-FS-Device_Driver\inc\usb_int.h)(0x65B4DBDF)
 F (.\User\usb_desc.h)(0x65B4DBDF)()
 F (.\User\usb_endp.c)(0x65B4DBDF)(--gnu -c --cpu Cortex-M3 -g -O1 --apcs=interwork --split_sections -I .\Start -I .\User -I .\Library -I .\System -I .\Hardware -I .\Library\STM32_USB-FS-Device_Driver\inc -I .\Library\STM32_USB-FS-Device_Driver\src-ID:\Keil5\ARM\Packs\Keil\STM32F1xx_DFP\2.2.0\Device\Include-D__UVISION_VERSION="538" -DSTM32F10X_MD -DUSE_STDPERIPH_DRIVER-o .\objects\usb_endp.o --omf_browse .\objects\usb_endp.crf --depend .\objects\usb_endp.d)
-I (User\hw_config.h)(0x65B4DBDF)
+I (User\hw_config.h)(0x65B7699E)
 I (User\platform_config.h)(0x65B4DBDF)
 I (User\stm3210b_eval.h)(0x65B4DBDF)
 I (.\Start\stm32f10x.h)(0x65B4DBDF)
@@ -1075,7 +1075,7 @@ I (User\stm32_eval_legacy.h)(0x65B4DBDF)
 I (.\Library\STM32_USB-FS-Device_Driver\inc\usb_type.h)(0x65B4DBDF)
 I (.\User\usb_conf.h)(0x65B4DBDF)
 I (.\Library\STM32_USB-FS-Device_Driver\inc\usb_lib.h)(0x65B4DBDF)
-I (.\User\hw_config.h)(0x65B4DBDF)
+I (.\User\hw_config.h)(0x65B7699E)
 I (.\Library\STM32_USB-FS-Device_Driver\inc\usb_regs.h)(0x65B4DBDF)
 I (.\Library\STM32_USB-FS-Device_Driver\inc\usb_def.h)(0x65B4DBDF)
 I (.\Library\STM32_USB-FS-Device_Driver\inc\usb_core.h)(0x65B4DBDF)
@@ -1091,7 +1091,7 @@ F (.\User\usb_istr.c)(0x65B4DBDF)(--gnu -c --cpu Cortex-M3 -g -O1 --apcs=interwo
 I (User\usb_istr.h)(0x65B4DBDF)
 I (User\usb_conf.h)(0x65B4DBDF)
 I (.\Library\STM32_USB-FS-Device_Driver\inc\usb_lib.h)(0x65B4DBDF)
-I (.\User\hw_config.h)(0x65B4DBDF)
+I (.\User\hw_config.h)(0x65B7699E)
 I (.\User\platform_config.h)(0x65B4DBDF)
 I (.\User\stm3210b_eval.h)(0x65B4DBDF)
 I (.\Start\stm32f10x.h)(0x65B4DBDF)
@@ -1139,7 +1139,7 @@ F (.\User\usb_istr.h)(0x65B4DBDF)()
 F (.\User\usb_prop.c)(0x65B4DBDF)(--gnu -c --cpu Cortex-M3 -g -O1 --apcs=interwork --split_sections -I .\Start -I .\User -I .\Library -I .\System -I .\Hardware -I .\Library\STM32_USB-FS-Device_Driver\inc -I .\Library\STM32_USB-FS-Device_Driver\src-ID:\Keil5\ARM\Packs\Keil\STM32F1xx_DFP\2.2.0\Device\Include-D__UVISION_VERSION="538" -DSTM32F10X_MD -DUSE_STDPERIPH_DRIVER-o .\objects\usb_prop.o --omf_browse .\objects\usb_prop.crf --depend .\objects\usb_prop.d)
 I (User\usb_prop.h)(0x65B4DBDF)
 I (.\Library\STM32_USB-FS-Device_Driver\inc\usb_lib.h)(0x65B4DBDF)
-I (.\User\hw_config.h)(0x65B4DBDF)
+I (.\User\hw_config.h)(0x65B7699E)
 I (.\User\platform_config.h)(0x65B4DBDF)
 I (.\User\stm3210b_eval.h)(0x65B4DBDF)
 I (.\Start\stm32f10x.h)(0x65B4DBDF)
@@ -1187,7 +1187,7 @@ I (.\Library\STM32_USB-FS-Device_Driver\inc\usb_int.h)(0x65B4DBDF)
 F (.\User\usb_prop.h)(0x65B4DBDF)()
 F (.\User\usb_pwr.c)(0x65B4DBDF)(--gnu -c --cpu Cortex-M3 -g -O1 --apcs=interwork --split_sections -I .\Start -I .\User -I .\Library -I .\System -I .\Hardware -I .\Library\STM32_USB-FS-Device_Driver\inc -I .\Library\STM32_USB-FS-Device_Driver\src-ID:\Keil5\ARM\Packs\Keil\STM32F1xx_DFP\2.2.0\Device\Include-D__UVISION_VERSION="538" -DSTM32F10X_MD -DUSE_STDPERIPH_DRIVER-o .\objects\usb_pwr.o --omf_browse .\objects\usb_pwr.crf --depend .\objects\usb_pwr.d)
 I (.\Library\STM32_USB-FS-Device_Driver\inc\usb_lib.h)(0x65B4DBDF)
-I (.\User\hw_config.h)(0x65B4DBDF)
+I (.\User\hw_config.h)(0x65B7699E)
 I (.\User\platform_config.h)(0x65B4DBDF)
 I (.\User\stm3210b_eval.h)(0x65B4DBDF)
 I (.\Start\stm32f10x.h)(0x65B4DBDF)
@@ -1277,7 +1277,7 @@ F (.\Library\STM32_USB-FS-Device_Driver\inc\usb_sil.h)(0x65B4DBDF)()
 F (.\Library\STM32_USB-FS-Device_Driver\inc\usb_type.h)(0x65B4DBDF)()
 F (.\Library\STM32_USB-FS-Device_Driver\src\usb_core.c)(0x65B4DBDF)(--gnu -c --cpu Cortex-M3 -g -O1 --apcs=interwork --split_sections -I .\Start -I .\User -I .\Library -I .\System -I .\Hardware -I .\Library\STM32_USB-FS-Device_Driver\inc -I .\Library\STM32_USB-FS-Device_Driver\src-ID:\Keil5\ARM\Packs\Keil\STM32F1xx_DFP\2.2.0\Device\Include-D__UVISION_VERSION="538" -DSTM32F10X_MD -DUSE_STDPERIPH_DRIVER-o .\objects\usb_core.o --omf_browse .\objects\usb_core.crf --depend .\objects\usb_core.d)
 I (.\Library\STM32_USB-FS-Device_Driver\inc\usb_lib.h)(0x65B4DBDF)
-I (.\User\hw_config.h)(0x65B4DBDF)
+I (.\User\hw_config.h)(0x65B7699E)
 I (.\User\platform_config.h)(0x65B4DBDF)
 I (.\User\stm3210b_eval.h)(0x65B4DBDF)
 I (.\Start\stm32f10x.h)(0x65B4DBDF)
@@ -1324,7 +1324,7 @@ I (.\Library\STM32_USB-FS-Device_Driver\inc\usb_mem.h)(0x65B4DBDF)
 I (.\Library\STM32_USB-FS-Device_Driver\inc\usb_int.h)(0x65B4DBDF)
 F (.\Library\STM32_USB-FS-Device_Driver\src\usb_init.c)(0x65B4DBDF)(--gnu -c --cpu Cortex-M3 -g -O1 --apcs=interwork --split_sections -I .\Start -I .\User -I .\Library -I .\System -I .\Hardware -I .\Library\STM32_USB-FS-Device_Driver\inc -I .\Library\STM32_USB-FS-Device_Driver\src-ID:\Keil5\ARM\Packs\Keil\STM32F1xx_DFP\2.2.0\Device\Include-D__UVISION_VERSION="538" -DSTM32F10X_MD -DUSE_STDPERIPH_DRIVER-o .\objects\usb_init.o --omf_browse .\objects\usb_init.crf --depend .\objects\usb_init.d)
 I (.\Library\STM32_USB-FS-Device_Driver\inc\usb_lib.h)(0x65B4DBDF)
-I (.\User\hw_config.h)(0x65B4DBDF)
+I (.\User\hw_config.h)(0x65B7699E)
 I (.\User\platform_config.h)(0x65B4DBDF)
 I (.\User\stm3210b_eval.h)(0x65B4DBDF)
 I (.\Start\stm32f10x.h)(0x65B4DBDF)
@@ -1371,7 +1371,7 @@ I (.\Library\STM32_USB-FS-Device_Driver\inc\usb_mem.h)(0x65B4DBDF)
 I (.\Library\STM32_USB-FS-Device_Driver\inc\usb_int.h)(0x65B4DBDF)
 F (.\Library\STM32_USB-FS-Device_Driver\src\usb_int.c)(0x65B4DBDF)(--gnu -c --cpu Cortex-M3 -g -O1 --apcs=interwork --split_sections -I .\Start -I .\User -I .\Library -I .\System -I .\Hardware -I .\Library\STM32_USB-FS-Device_Driver\inc -I .\Library\STM32_USB-FS-Device_Driver\src-ID:\Keil5\ARM\Packs\Keil\STM32F1xx_DFP\2.2.0\Device\Include-D__UVISION_VERSION="538" -DSTM32F10X_MD -DUSE_STDPERIPH_DRIVER-o .\objects\usb_int.o --omf_browse .\objects\usb_int.crf --depend .\objects\usb_int.d)
 I (.\Library\STM32_USB-FS-Device_Driver\inc\usb_lib.h)(0x65B4DBDF)
-I (.\User\hw_config.h)(0x65B4DBDF)
+I (.\User\hw_config.h)(0x65B7699E)
 I (.\User\platform_config.h)(0x65B4DBDF)
 I (.\User\stm3210b_eval.h)(0x65B4DBDF)
 I (.\Start\stm32f10x.h)(0x65B4DBDF)
@@ -1418,7 +1418,7 @@ I (.\Library\STM32_USB-FS-Device_Driver\inc\usb_mem.h)(0x65B4DBDF)
 I (.\Library\STM32_USB-FS-Device_Driver\inc\usb_int.h)(0x65B4DBDF)
 F (.\Library\STM32_USB-FS-Device_Driver\src\usb_mem.c)(0x65B4DBDF)(--gnu -c --cpu Cortex-M3 -g -O1 --apcs=interwork --split_sections -I .\Start -I .\User -I .\Library -I .\System -I .\Hardware -I .\Library\STM32_USB-FS-Device_Driver\inc -I .\Library\STM32_USB-FS-Device_Driver\src-ID:\Keil5\ARM\Packs\Keil\STM32F1xx_DFP\2.2.0\Device\Include-D__UVISION_VERSION="538" -DSTM32F10X_MD -DUSE_STDPERIPH_DRIVER-o .\objects\usb_mem.o --omf_browse .\objects\usb_mem.crf --depend .\objects\usb_mem.d)
 I (.\Library\STM32_USB-FS-Device_Driver\inc\usb_lib.h)(0x65B4DBDF)
-I (.\User\hw_config.h)(0x65B4DBDF)
+I (.\User\hw_config.h)(0x65B7699E)
 I (.\User\platform_config.h)(0x65B4DBDF)
 I (.\User\stm3210b_eval.h)(0x65B4DBDF)
 I (.\Start\stm32f10x.h)(0x65B4DBDF)
@@ -1465,7 +1465,7 @@ I (.\Library\STM32_USB-FS-Device_Driver\inc\usb_mem.h)(0x65B4DBDF)
 I (.\Library\STM32_USB-FS-Device_Driver\inc\usb_int.h)(0x65B4DBDF)
 F (.\Library\STM32_USB-FS-Device_Driver\src\usb_regs.c)(0x65B4DBDF)(--gnu -c --cpu Cortex-M3 -g -O1 --apcs=interwork --split_sections -I .\Start -I .\User -I .\Library -I .\System -I .\Hardware -I .\Library\STM32_USB-FS-Device_Driver\inc -I .\Library\STM32_USB-FS-Device_Driver\src-ID:\Keil5\ARM\Packs\Keil\STM32F1xx_DFP\2.2.0\Device\Include-D__UVISION_VERSION="538" -DSTM32F10X_MD -DUSE_STDPERIPH_DRIVER-o .\objects\usb_regs.o --omf_browse .\objects\usb_regs.crf --depend .\objects\usb_regs.d)
 I (.\Library\STM32_USB-FS-Device_Driver\inc\usb_lib.h)(0x65B4DBDF)
-I (.\User\hw_config.h)(0x65B4DBDF)
+I (.\User\hw_config.h)(0x65B7699E)
 I (.\User\platform_config.h)(0x65B4DBDF)
 I (.\User\stm3210b_eval.h)(0x65B4DBDF)
 I (.\Start\stm32f10x.h)(0x65B4DBDF)
@@ -1512,7 +1512,7 @@ I (.\Library\STM32_USB-FS-Device_Driver\inc\usb_mem.h)(0x65B4DBDF)
 I (.\Library\STM32_USB-FS-Device_Driver\inc\usb_int.h)(0x65B4DBDF)
 F (.\Library\STM32_USB-FS-Device_Driver\src\usb_sil.c)(0x65B4DBDF)(--gnu -c --cpu Cortex-M3 -g -O1 --apcs=interwork --split_sections -I .\Start -I .\User -I .\Library -I .\System -I .\Hardware -I .\Library\STM32_USB-FS-Device_Driver\inc -I .\Library\STM32_USB-FS-Device_Driver\src-ID:\Keil5\ARM\Packs\Keil\STM32F1xx_DFP\2.2.0\Device\Include-D__UVISION_VERSION="538" -DSTM32F10X_MD -DUSE_STDPERIPH_DRIVER-o .\objects\usb_sil.o --omf_browse .\objects\usb_sil.crf --depend .\objects\usb_sil.d)
 I (.\Library\STM32_USB-FS-Device_Driver\inc\usb_lib.h)(0x65B4DBDF)
-I (.\User\hw_config.h)(0x65B4DBDF)
+I (.\User\hw_config.h)(0x65B7699E)
 I (.\User\platform_config.h)(0x65B4DBDF)
 I (.\User\stm3210b_eval.h)(0x65B4DBDF)
 I (.\Start\stm32f10x.h)(0x65B4DBDF)

@@ -43,7 +43,7 @@ const uint8_t KeyBoard_ConfigDescriptor[KEYBOARD_CONFIG_DESC] = {
     USB_INTERFACE_DESCRIPTOR_TYPE,/*bDescriptorType: Interface descriptor type*/
     0x00,         /*bInterfaceNumber: Number of Interface*/
     0x00,         /*bAlternateSetting: Alternate setting*/
-    0x01,         /*bNumEndpoints*/
+    0x02,         /*bNumEndpoints*/
     0x03,         /*bInterfaceClass: HID*/
     0x01,         /*bInterfaceSubClass : 1=BOOT, 0=no boot*/
     0x01,         /*nInterfaceProtocol : 0=none, 1=keyboard, 2=mouse*/
@@ -68,7 +68,7 @@ const uint8_t KeyBoard_ConfigDescriptor[KEYBOARD_CONFIG_DESC] = {
     0x03,          /*bmAttributes: Interrupt endpoint*/
     0x0F,          /*wMaxPacketSize: 15 Byte max */
     0x00,
-    0x02,          /*bInterval: Polling Interval (2 ms)*/
+    0x01,          /*bInterval: Polling Interval (1 ms)*/
     /* 34 */
 	0x07,	/* bLength: Endpoint Descriptor size */
     USB_ENDPOINT_DESCRIPTOR_TYPE,	/* bDescriptorType: */
@@ -78,7 +78,7 @@ const uint8_t KeyBoard_ConfigDescriptor[KEYBOARD_CONFIG_DESC] = {
     0x03,	/* bmAttributes: Interrupt endpoint */
     0x02,	/* wMaxPacketSize: 2 Bytes max  */
     0x00,
-    0x02,	/* bInterval: Polling Interval (20 ms) */
+    0x25,	/* bInterval: Polling Interval (25 ms) */
     /* 41 */
 }; /* MOUSE_ConfigDescriptor */
 

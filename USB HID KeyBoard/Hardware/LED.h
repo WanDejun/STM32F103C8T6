@@ -3,7 +3,8 @@
 #include "stm32f10x.h"                  // Device header
 
 void LED_Init(void);
-void LED_set(uint16_t Pin, BitAction Action);
+void LED_Set(uint16_t Pin);
+void LED_Reset(uint16_t Pin);
 void LED_Flip(uint16_t Pin);
 
 #endif

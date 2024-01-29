@@ -20,13 +20,6 @@ static __IO uint8_t KeyBoard_Buffer[15] = {};
   */
 void Set_System(void) {
 	GPIO_InitTypeDef  GPIO_InitStructure;  
-	/*!< At this stage the microcontroller clock setting is already configured, 
-	   this is done through SystemInit() function which is called from startup
-	   file (startup_stm32xxx.s) before to branch to application main.
-	   To reconfigure the default setting of SystemInit() function, refer to
-	   system_stm32xxx.c file
-	 */ 
-
 	/******************************************/
 	/*           Enable the PWR clock         */
 	/******************************************/
@@ -38,7 +31,7 @@ void Set_System(void) {
 	GPIO_InitStructure.GPIO_Mode = GPIO_Mode_AF_PP;
 	GPIO_Init(GPIOA, &GPIO_InitStructure);
 	
-	// 初始化按键(全在GPIOA口)
+	// 初始化按键(全在GPIOA口), 有需要可以更改
 	uint8_t i;
 	uint16_t GPIO_Pin_AllKey = 0;
 	extern const uint16_t KEY_PIN[KEYn];
@@ -124,8 +117,8 @@ void USB_Cable_Config (FunctionalState NewState) {
 }
 
 /**
-  * Function Name : JoyState.
-  * Description   : Decodes the KeyBoard direction.
+  * Function Name : KeyState
+  * Description   : 更新按键信息，具体缓冲区与按键的对应关系参考报告描述符和HID Usage Table(P89)，按键更新可以进一步封装
   * Input         : None.
   * Output        : None.
   * Return value  : The direction value.
@@ -133,11 +126,29 @@ void USB_Cable_Config (FunctionalState NewState) {
 uint8_t KeyState(void) {
 	uint8_t state = 0;
 	
+	/* "ALL" key is updated */
+	if (!GetKeyState(KEY_ALL)) {
+		if (!(KeyBoard_Buffer[2] & 16)) {
+			KeyBoard_Buffer[2] |= 0xF0;
+			KeyBoard_Buffer[3] = KeyBoard_Buffer[4] = 0xFF;
+			KeyBoard_Buffer[5] = 0x03;
+			state |= 1;
+		}
+	}
+	else {
+		if (KeyBoard_Buffer[2] & 16) {
+			KeyBoard_Buffer[2] &= (~0xF0);
+			KeyBoard_Buffer[3] = KeyBoard_Buffer[4] = 0x00;
+			KeyBoard_Buffer[5] = 0x00;
+			state |= 1;
+		}
+	}
+	
 	/**	
-	* @brief Mouse move
+	* @brief Key event
 	**/
-	/* "A" key is pressed */
-	if (!GetKeyState(KEY_a_A)) {
+	/* "A" key is updated*/
+	if (!GetKeyState(KEY_a_A)) { 
 		KeyBoard_Buffer[2] |= 1;
 		state |= 1;
 	}
@@ -145,7 +156,7 @@ uint8_t KeyState(void) {
 		KeyBoard_Buffer[2] &= (~1);
 		state |= 1;
 	}
-	/* "B" key is pressed */
+	/* "B" key is updated */
 	if (!GetKeyState(KEY_b_B)) {
 		if (!(KeyBoard_Buffer[2] & 2)) {
 			KeyBoard_Buffer[2] |= 2;
@@ -158,7 +169,7 @@ uint8_t KeyState(void) {
 			state |= 1;
 		}
 	}
-	/* "C" key is pressed */
+	/* "C" key is updated */
 	if (!GetKeyState(KEY_c_C)) {
 		if (!(KeyBoard_Buffer[2] & 4)) {
 			KeyBoard_Buffer[2] |= 4;
@@ -171,7 +182,7 @@ uint8_t KeyState(void) {
 			state |= 1;
 		}
 	}
-	/* "D" key is pressed */
+	/* "D" key is updated */
 	if (!GetKeyState(KEY_d_D)) {
 		if (!(KeyBoard_Buffer[2] & 8)) {
 			KeyBoard_Buffer[2] |= 8;

@@ -183,29 +183,29 @@ uint8_t JoyState(void) {
 	
 	
 	// 连点器
-//	if (!GetKeyState(Button_CLICK_L)) {
-//		if (!(Mouse_Buffer[0] & 1)) {
-//			Mouse_Buffer[0] |= 1;
-//		}
-//		else {
-//			Mouse_Buffer[0] &= (~1);
-//		}
-//		t |= 1;
-//	}
-	
-	/*  "Left Click" key is pressed */
-	if (!GetKeyState(Button_CLICK_L)) { 
+	if (!GetKeyState(Button_CLICK_L)) {
 		if (!(Mouse_Buffer[0] & 1)) {
 			Mouse_Buffer[0] |= 1;
-			t |= 1;
 		}
-	}
-	else {
-		if (Mouse_Buffer[0] & 1) {
+		else {
 			Mouse_Buffer[0] &= (~1);
-			t |= 1;
 		}
+		t |= 1;
 	}
+	
+//	/*  "Left Click" key is pressed */
+//	if (!GetKeyState(Button_CLICK_L)) { 
+//		if (!(Mouse_Buffer[0] & 1)) {
+//			Mouse_Buffer[0] |= 1;
+//			t |= 1;
+//		}
+//	}
+//	else {
+//		if (Mouse_Buffer[0] & 1) {
+//			Mouse_Buffer[0] &= (~1);
+//			t |= 1;
+//		}
+//	}
 	/*  "Right Click" key is pressed */
 	if (!GetKeyState(Button_CLICK_R)) { 
 		if (!(Mouse_Buffer[0] & 2)) {
