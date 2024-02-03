@@ -27,8 +27,8 @@
 #define SCL_Pin		GPIO_Pin_5
 #define SDA_Pin		GPIO_Pin_6
 #define RES_Pin		GPIO_Pin_7
-#define DC_Pin			GPIO_Pin_8
-#define CS_Pin			GPIO_Pin_9
+#define DC_Pin		GPIO_Pin_8
+#define CS_Pin		GPIO_Pin_9
 #define BLK_Pin		GPIO_Pin_10
 
 #define LCD_SCLK_Clr() GPIO_ResetBits(SCL_Port,SCL_Pin)//SCL=SCLK

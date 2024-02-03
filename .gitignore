@@ -5,6 +5,6 @@ DebugConfig/
 
 *.o
 *.d
-*.crf
+crf
 *.htm
 *.zip
