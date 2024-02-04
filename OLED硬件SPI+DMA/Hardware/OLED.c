@@ -5,6 +5,15 @@
 #include <stdio.h>
 #include <stdarg.h>
 
+ #define SPI_SPEED_36000000
+// #define SPI_SPEED_18000000
+// #define SPI_SPEED_9000000
+// #define SPI_SPEED_4500000
+// #define SPI_SPEED_2250000
+// #define SPI_SPEED_1125000
+// #define SPI_SPEED_562500
+// #define SPI_SPEED_281250
+
 /**
   * 数据存储格式：
   * 纵向8点，高位在下，先从左到右，再从上到下
@@ -59,7 +68,41 @@
   * 随后调用OLED_Update函数或OLED_UpdateArea函数
   * 才会将显存数组的数据发送到OLED硬件，进行显示
   */
-uint8_t OLED_DisplayBuf[8][128];
+uint8_t OLED_DisplayBuf[8][128] = {{0xff, 0xff, 0xff}};
+uint8_t DMA1_Channal3_StateFlag;
+
+void delay() {
+	__IO uint8_t i;
+	__IO uint8_t n;
+#ifdef SPI_SPEED_36000000
+		return;
+#endif
+#ifdef SPI_SPEED_18000000
+		n = 2;
+#endif		
+#ifdef SPI_SPEED_9000000
+		n = 5;
+#endif
+#ifdef SPI_SPEED_4500000
+		n = 10;
+#endif
+#ifdef SPI_SPEED_2250000
+		n = 20;
+#endif
+#ifdef SPI_SPEED_1125000
+		n = 40;
+#endif
+#ifdef SPI_SPEED_562500
+		n = 80;
+#endif
+#ifdef SPI_SPEED_281250
+		n = 160;
+#endif
+	for (i = 0; i < n; i++) {
+		i++;
+		i--;
+	}
+}
 
 /*********************全局变量*/
 
@@ -69,46 +112,6 @@ uint8_t OLED_DisplayBuf[8][128];
 #define MOSI_Pin 	GPIO_Pin_7
 
 /*引脚配置*********************/
-
-/**
-  * 函    数：OLED写D0（CLK）高低电平
-  * 参    数：要写入D0的电平值，范围：0/1
-  * 返 回 值：无
-  * 说    明：当上层函数需要写D0时，此函数会被调用
-  *           用户需要根据参数传入的值，将D0置为高电平或者低电平
-  *           当参数传入0时，置D0为低电平，当参数传入1时，置D0为高电平
-  */
-void OLED_W_D0(uint8_t BitValue) {
-	/*根据BitValue的值，将D0置高电平或者低电平*/
-	GPIO_WriteBit(GPIOA, CLK_Pin, (BitAction)BitValue);
-}
-
-/**
-  * 函    数：OLED写D1（MOSI）高低电平
-  * 参    数：要写入D1的电平值，范围：0/1
-  * 返 回 值：无
-  * 说    明：当上层函数需要写D1时，此函数会被调用
-  *           用户需要根据参数传入的值，将D1置为高电平或者低电平
-  *           当参数传入0时，置D1为低电平，当参数传入1时，置D1为高电平
-  */
-void OLED_W_D1(uint8_t BitValue) {
-	/*根据BitValue的值，将D1置高电平或者低电平*/
-	GPIO_WriteBit(GPIOA, MOSI_Pin, (BitAction)BitValue);
-}
-
-/**
-  * 函    数：OLED写RES高低电平
-  * 参    数：要写入RES的电平值，范围：0/1
-  * 返 回 值：无
-  * 说    明：当上层函数需要写RES时，此函数会被调用
-  *           用户需要根据参数传入的值，将RES置为高电平或者低电平
-  *           当参数传入0时，置RES为低电平，当参数传入1时，置RES为高电平
-  */
-//void OLED_W_RES(uint8_t BitValue) {
-//	/*根据BitValue的值，将RES置高电平或者低电平*/
-//	GPIO_WriteBit(GPIOA, GPIO_Pin_7, (BitAction)BitValue);
-//}
-
 /**
   * 函    数：OLED写DC高低电平
   * 参    数：要写入DC的电平值，范围：0/1
@@ -169,7 +172,32 @@ void OLED_GPIO_Init(void) {
  	GPIO_Init(GPIOA, &GPIO_InitStructure);
 	
 	SPI_InitTypeDef SPI_InitSturcture;
+	
+#ifdef SPI_SPEED_36000000
+	SPI_InitSturcture.SPI_BaudRatePrescaler = SPI_BaudRatePrescaler_2;
+#endif
+#ifdef SPI_SPEED_18000000
 	SPI_InitSturcture.SPI_BaudRatePrescaler = SPI_BaudRatePrescaler_4;
+#endif
+#ifdef SPI_SPEED_9000000
+	SPI_InitSturcture.SPI_BaudRatePrescaler = SPI_BaudRatePrescaler_8;
+#endif
+#ifdef SPI_SPEED_4500000
+	SPI_InitSturcture.SPI_BaudRatePrescaler = SPI_BaudRatePrescaler_16;
+#endif
+#ifdef SPI_SPEED_2250000
+	SPI_InitSturcture.SPI_BaudRatePrescaler = SPI_BaudRatePrescaler_32;
+#endif
+#ifdef SPI_SPEED_1125000
+	SPI_InitSturcture.SPI_BaudRatePrescaler = SPI_BaudRatePrescaler_64;
+#endif
+#ifdef SPI_SPEED_562500
+	SPI_InitSturcture.SPI_BaudRatePrescaler = SPI_BaudRatePrescaler_128;
+#endif
+#ifdef SPI_SPEED_281250
+	SPI_InitSturcture.SPI_BaudRatePrescaler = SPI_BaudRatePrescaler_256;
+#endif
+
 	SPI_InitSturcture.SPI_CPHA = SPI_CPHA_1Edge;
 	SPI_InitSturcture.SPI_CPOL = SPI_CPOL_Low;
 	SPI_InitSturcture.SPI_CRCPolynomial = 7;
@@ -181,11 +209,88 @@ void OLED_GPIO_Init(void) {
 	SPI_Init(SPI1, &SPI_InitSturcture);
 	
 	SPI_Cmd(SPI1, ENABLE);
+	SPI_I2S_DMACmd(SPI1, SPI_I2S_DMAReq_Tx, ENABLE);
 	
 	/*置引脚默认电平*/
-	// OLED_W_RES(1);
 	OLED_W_DC(1);
 	OLED_W_CS(1);
+}
+
+void OLED_DMA_Init(void) {
+	RCC_AHBPeriphClockCmd(RCC_AHBPeriph_DMA1, ENABLE);
+	
+	DMA_InitTypeDef DMA_InitStructure;
+	DMA_InitStructure.DMA_BufferSize = 0; //DMA菜单中的任务数量
+	DMA_InitStructure.DMA_DIR = DMA_DIR_PeripheralDST;
+	DMA_InitStructure.DMA_M2M = DMA_M2M_Disable;
+	DMA_InitStructure.DMA_Mode = DMA_Mode_Normal;
+	
+	DMA_InitStructure.DMA_MemoryBaseAddr = (uint32_t)(OLED_DisplayBuf[0]);
+	DMA_InitStructure.DMA_MemoryDataSize = DMA_MemoryDataSize_Byte;
+	DMA_InitStructure.DMA_MemoryInc = DMA_MemoryInc_Enable;
+	
+	DMA_InitStructure.DMA_PeripheralBaseAddr = (uint32_t)&SPI1->DR;
+	DMA_InitStructure.DMA_PeripheralDataSize = DMA_PeripheralDataSize_Byte;
+	DMA_InitStructure.DMA_PeripheralInc = DMA_PeripheralInc_Disable;
+	
+	DMA_InitStructure.DMA_Priority = DMA_Priority_High;
+	DMA_Init(DMA1_Channel3, &DMA_InitStructure);
+	
+	NVIC_InitTypeDef NVIC_InitStructure;
+	NVIC_InitStructure.NVIC_IRQChannel = DMA1_Channel3_IRQn;
+	NVIC_InitStructure.NVIC_IRQChannelCmd = ENABLE;
+	NVIC_InitStructure.NVIC_IRQChannelPreemptionPriority = 2;
+	NVIC_InitStructure.NVIC_IRQChannelSubPriority = 2;
+	NVIC_Init(&NVIC_InitStructure);
+	
+	DMA_Cmd(DMA1_Channel3, DISABLE);
+	DMA_ITConfig(DMA1_Channel3, DMA_IT_TC, ENABLE);
+	
+	DMA1_Channal3_StateFlag = 0xF0;
+}
+
+void DMA1_Channel3_IRQHandler(void) {
+	if (DMA_GetITStatus(DMA1_IT_TC3) == SET) {
+		delay();
+
+		switch (DMA1_Channal3_StateFlag) {
+		case 0x00:
+		case 0x01:
+		case 0x02:
+		case 0x03:
+		case 0x04:
+		case 0x05:
+		case 0x06:
+			DMA1_Channal3_StateFlag++;
+			DMA_Cmd(DMA1_Channel3, DISABLE);
+			
+			OLED_W_DC(0);
+		
+			SPI_I2S_SendData(SPI1, 0xB0 | DMA1_Channal3_StateFlag); //设置页位置
+			while (SPI_I2S_GetFlagStatus(SPI1, SPI_I2S_FLAG_TXE) != SET);
+			
+			SPI_I2S_SendData(SPI1, 0x10);							//设置X位置高4位
+			while (SPI_I2S_GetFlagStatus(SPI1, SPI_I2S_FLAG_TXE) != SET);
+			
+			SPI_I2S_SendData(SPI1, 0x00 | 0x02);					//设置X位置低4位
+			while (SPI_I2S_GetFlagStatus(SPI1, SPI_I2S_FLAG_TXE) != SET);
+			
+			delay();
+
+			OLED_W_DC(1);
+			
+			DMA_SetCurrDataCounter(DMA1_Channel3, 128);
+			DMA1_Channel3->CMAR = (uint32_t)OLED_DisplayBuf[DMA1_Channal3_StateFlag];
+			DMA_Cmd(DMA1_Channel3, ENABLE);
+			break;
+		default:
+			DMA1_Channal3_StateFlag = 0xF0;
+			OLED_W_CS(1);
+			break;
+		}
+		
+		DMA_ClearITPendingBit(DMA1_IT_TC3);
+	}
 }
 
 /*********************引脚配置*/
@@ -198,9 +303,11 @@ void OLED_GPIO_Init(void) {
   * 参    数：Byte 要发送的一个字节数据，范围：0x00~0xFF
   * 返 回 值：无
   */
-void OLED_SPI_SendByte(uint8_t Byte) {
-	while (SPI_I2S_GetFlagStatus(SPI1, SPI_I2S_FLAG_TXE) != SET);
-	SPI_I2S_SendData(SPI1, Byte);
+void OLED_SPI_SendArray(uint8_t* Bytes, uint16_t Count) {	
+	DMA_Cmd(DMA1_Channel3, DISABLE);
+	DMA1_Channel3->CMAR = (uint32_t)Bytes;
+	DMA_SetCurrDataCounter(DMA1_Channel3, Count);
+	DMA_Cmd(DMA1_Channel3, ENABLE);
 }
 
 /**
@@ -209,10 +316,13 @@ void OLED_SPI_SendByte(uint8_t Byte) {
   * 返 回 值：无
   */
 void OLED_WriteCommand(uint8_t Command) {
+	while (DMA1_Channal3_StateFlag != 0xF0);
+	
 	OLED_W_CS(0);					//拉低CS，开始通信
 	OLED_W_DC(0);					//拉低DC，表示即将发送命令
-	OLED_SPI_SendByte(Command);		//写入指定命令
-	OLED_W_CS(1);					//拉高CS，结束通信
+	
+	DMA1_Channal3_StateFlag = 0xFF;
+	OLED_SPI_SendArray(&Command, 1);		//写入指定命令
 }
 
 /**
@@ -222,16 +332,13 @@ void OLED_WriteCommand(uint8_t Command) {
   * 返 回 值：无
   */
 void OLED_WriteData(uint8_t *Data, uint8_t Count) {
-	uint8_t i;
+	while (DMA1_Channal3_StateFlag != 0xF0);
 	
 	OLED_W_CS(0);					//拉低CS，开始通信
 	OLED_W_DC(1);					//拉高DC，表示即将发送数据
-	/*循环Count次，进行连续的数据写入*/
-	for (i = 0; i < Count; i ++)
-	{
-		OLED_SPI_SendByte(Data[i]);	//依次发送Data的每一个数据
-	}
-	OLED_W_CS(1);					//拉高CS，结束通信
+
+	DMA1_Channal3_StateFlag = 0x00;
+	OLED_SPI_SendArray(Data, Count);
 }
 
 /*********************通信协议*/
@@ -247,6 +354,7 @@ void OLED_WriteData(uint8_t *Data, uint8_t Count) {
   */
 void OLED_Init(void) {
 	OLED_GPIO_Init();			//先调用底层的端口初始化
+	OLED_DMA_Init();
 	
 	/*写入一系列的命令，对OLED进行初始化配置*/
 	OLED_WriteCommand(0xAE);	//设置显示开启/关闭，0xAE关闭，0xAF开启
@@ -298,8 +406,7 @@ void OLED_Init(void) {
   * 返 回 值：无
   * 说    明：OLED默认的Y轴，只能8个Bit为一组写入，即1页等于8个Y轴坐标
   */
-void OLED_SetCursor(uint8_t Page, uint8_t X)
-{
+void OLED_SetCursor(uint8_t Page, uint8_t X) {
 	/*如果使用此程序驱动1.3寸的OLED显示屏，则需要解除此注释*/
 	/*因为1.3寸的OLED驱动芯片（SH1106）有132列*/
 	/*屏幕的起始列接在了第2列，而不是第0列*/
@@ -373,8 +480,7 @@ uint8_t OLED_IsInAngle(int16_t X, int16_t Y, int16_t StartAngle, int16_t EndAngl
 	if (StartAngle < EndAngle)	//起始角度小于终止角度的情况
 	{
 		/*如果指定角度在起始终止角度之间，则判定指定点在指定角度*/
-		if (PointAngle >= StartAngle && PointAngle <= EndAngle)
-		{
+		if (PointAngle >= StartAngle && PointAngle <= EndAngle) {
 			return 1;
 		}
 	}
@@ -403,17 +509,11 @@ uint8_t OLED_IsInAngle(int16_t X, int16_t Y, int16_t StartAngle, int16_t EndAngl
   *           才会将显存数组的数据发送到OLED硬件，进行显示
   *           故调用显示函数后，要想真正地呈现在屏幕上，还需调用更新函数
   */
-void OLED_Update(void)
-{
-	uint8_t j;
-	/*遍历每一页*/
-	for (j = 0; j < 8; j ++)
-	{
-		/*设置光标位置为每一页的第一列*/
-		OLED_SetCursor(j, 0);
-		/*连续写入128个数据，将显存数组的数据写入到OLED硬件*/
-		OLED_WriteData(OLED_DisplayBuf[j], 128);
-	}
+void OLED_Update(void) {
+	/*设置光标位置为第一页的第一列*/
+	OLED_SetCursor(0, 0);
+	/*连续写入128个数据，将显存数组的数据写入到OLED硬件*/
+	OLED_WriteData(OLED_DisplayBuf[0], 128);
 }
 
 /**
@@ -430,8 +530,7 @@ void OLED_Update(void)
   *           才会将显存数组的数据发送到OLED硬件，进行显示
   *           故调用显示函数后，要想真正地呈现在屏幕上，还需调用更新函数
   */
-void OLED_UpdateArea(uint8_t X, uint8_t Y, uint8_t Width, uint8_t Height)
-{
+void OLED_UpdateArea(uint8_t X, uint8_t Y, uint8_t Width, uint8_t Height) {
 	uint8_t j;
 	
 	/*参数检查，保证指定区域不会超出屏幕范围*/
@@ -1324,8 +1423,7 @@ void OLED_DrawEllipse(uint8_t X, uint8_t Y, uint8_t A, uint8_t B, uint8_t IsFill
   * 返 回 值：无
   * 说    明：调用此函数后，要想真正地呈现在屏幕上，还需调用更新函数
   */
-void OLED_DrawArc(uint8_t X, uint8_t Y, uint8_t Radius, int16_t StartAngle, int16_t EndAngle, uint8_t IsFilled)
-{
+void OLED_DrawArc(uint8_t X, uint8_t Y, uint8_t Radius, int16_t StartAngle, int16_t EndAngle, uint8_t IsFilled) {
 	int16_t x, y, d, j;
 	
 	/*此函数借用Bresenham算法画圆的方法*/
@@ -1376,16 +1474,14 @@ void OLED_DrawArc(uint8_t X, uint8_t Y, uint8_t Radius, int16_t StartAngle, int1
 		if (IsFilled)	//指定圆弧填充
 		{
 			/*遍历中间部分*/
-			for (j = -y; j < y; j ++)
-			{
+			for (j = -y; j < y; j ++) {
 				/*在填充圆的每个点时，判断指定点是否在指定角度内，在，则画点，不在，则不做处理*/
 				if (OLED_IsInAngle(x, j, StartAngle, EndAngle)) {OLED_DrawPoint(X + x, Y + j);}
 				if (OLED_IsInAngle(-x, j, StartAngle, EndAngle)) {OLED_DrawPoint(X - x, Y + j);}
 			}
 			
 			/*遍历两侧部分*/
-			for (j = -x; j < x; j ++)
-			{
+			for (j = -x; j < x; j ++) {
 				/*在填充圆的每个点时，判断指定点是否在指定角度内，在，则画点，不在，则不做处理*/
 				if (OLED_IsInAngle(-y, j, StartAngle, EndAngle)) {OLED_DrawPoint(X - y, Y + j);}
 				if (OLED_IsInAngle(y, j, StartAngle, EndAngle)) {OLED_DrawPoint(X + y, Y + j);}

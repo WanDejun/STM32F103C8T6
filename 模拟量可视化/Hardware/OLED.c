@@ -71,45 +71,6 @@ uint8_t OLED_DisplayBuf[8][128];
 /*引脚配置*********************/
 
 /**
-  * 函    数：OLED写D0（CLK）高低电平
-  * 参    数：要写入D0的电平值，范围：0/1
-  * 返 回 值：无
-  * 说    明：当上层函数需要写D0时，此函数会被调用
-  *           用户需要根据参数传入的值，将D0置为高电平或者低电平
-  *           当参数传入0时，置D0为低电平，当参数传入1时，置D0为高电平
-  */
-void OLED_W_D0(uint8_t BitValue) {
-	/*根据BitValue的值，将D0置高电平或者低电平*/
-	GPIO_WriteBit(GPIOA, CLK_Pin, (BitAction)BitValue);
-}
-
-/**
-  * 函    数：OLED写D1（MOSI）高低电平
-  * 参    数：要写入D1的电平值，范围：0/1
-  * 返 回 值：无
-  * 说    明：当上层函数需要写D1时，此函数会被调用
-  *           用户需要根据参数传入的值，将D1置为高电平或者低电平
-  *           当参数传入0时，置D1为低电平，当参数传入1时，置D1为高电平
-  */
-void OLED_W_D1(uint8_t BitValue) {
-	/*根据BitValue的值，将D1置高电平或者低电平*/
-	GPIO_WriteBit(GPIOA, MOSI_Pin, (BitAction)BitValue);
-}
-
-/**
-  * 函    数：OLED写RES高低电平
-  * 参    数：要写入RES的电平值，范围：0/1
-  * 返 回 值：无
-  * 说    明：当上层函数需要写RES时，此函数会被调用
-  *           用户需要根据参数传入的值，将RES置为高电平或者低电平
-  *           当参数传入0时，置RES为低电平，当参数传入1时，置RES为高电平
-  */
-//void OLED_W_RES(uint8_t BitValue) {
-//	/*根据BitValue的值，将RES置高电平或者低电平*/
-//	GPIO_WriteBit(GPIOA, GPIO_Pin_7, (BitAction)BitValue);
-//}
-
-/**
   * 函    数：OLED写DC高低电平
   * 参    数：要写入DC的电平值，范围：0/1
   * 返 回 值：无
@@ -183,7 +144,6 @@ void OLED_GPIO_Init(void) {
 	SPI_Cmd(SPI1, ENABLE);
 	
 	/*置引脚默认电平*/
-	// OLED_W_RES(1);
 	OLED_W_DC(1);
 	OLED_W_CS(1);
 }
@@ -208,8 +168,7 @@ void OLED_SPI_SendByte(uint8_t Byte) {
   * 参    数：Command 要写入的命令值，范围：0x00~0xFF
   * 返 回 值：无
   */
-void OLED_WriteCommand(uint8_t Command)
-{
+void OLED_WriteCommand(uint8_t Command) {
 	OLED_W_CS(0);					//拉低CS，开始通信
 	OLED_W_DC(0);					//拉低DC，表示即将发送命令
 	OLED_SPI_SendByte(Command);		//写入指定命令
@@ -229,8 +188,7 @@ void OLED_WriteData(uint8_t *Data, uint8_t Count)
 	OLED_W_CS(0);					//拉低CS，开始通信
 	OLED_W_DC(1);					//拉高DC，表示即将发送数据
 	/*循环Count次，进行连续的数据写入*/
-	for (i = 0; i < Count; i ++)
-	{
+	for (i = 0; i < Count; i ++) {
 		OLED_SPI_SendByte(Data[i]);	//依次发送Data的每一个数据
 	}
 	OLED_W_CS(1);					//拉高CS，结束通信
