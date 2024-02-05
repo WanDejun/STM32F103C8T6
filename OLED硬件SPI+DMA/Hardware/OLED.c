@@ -68,7 +68,7 @@
   * 随后调用OLED_Update函数或OLED_UpdateArea函数
   * 才会将显存数组的数据发送到OLED硬件，进行显示
   */
-uint8_t OLED_DisplayBuf[8][128] = {{0xff, 0xff, 0xff}};
+uint8_t OLED_DisplayBuf[8][128];
 uint8_t DMA1_Channal3_StateFlag;
 
 void delay() {
@@ -511,7 +511,25 @@ uint8_t OLED_IsInAngle(int16_t X, int16_t Y, int16_t StartAngle, int16_t EndAngl
   */
 void OLED_Update(void) {
 	/*设置光标位置为第一页的第一列*/
-	OLED_SetCursor(0, 0);
+	while (DMA1_Channal3_StateFlag != 0xF0);
+	
+	OLED_W_CS(0);					//拉低CS，开始通信
+	OLED_W_DC(0);
+		
+	SPI_I2S_SendData(SPI1, 0xB0); //设置页位置
+	while (SPI_I2S_GetFlagStatus(SPI1, SPI_I2S_FLAG_TXE) != SET);
+	
+	SPI_I2S_SendData(SPI1, 0x10);							//设置X位置高4位
+	while (SPI_I2S_GetFlagStatus(SPI1, SPI_I2S_FLAG_TXE) != SET);
+	
+	SPI_I2S_SendData(SPI1, 0x00 | 0x02);					//设置X位置低4位
+	while (SPI_I2S_GetFlagStatus(SPI1, SPI_I2S_FLAG_TXE) != SET);
+	
+	delay();
+
+	OLED_W_DC(1);
+	OLED_W_CS(1);
+	
 	/*连续写入128个数据，将显存数组的数据写入到OLED硬件*/
 	OLED_WriteData(OLED_DisplayBuf[0], 128);
 }
@@ -530,25 +548,25 @@ void OLED_Update(void) {
   *           才会将显存数组的数据发送到OLED硬件，进行显示
   *           故调用显示函数后，要想真正地呈现在屏幕上，还需调用更新函数
   */
-void OLED_UpdateArea(uint8_t X, uint8_t Y, uint8_t Width, uint8_t Height) {
-	uint8_t j;
-	
-	/*参数检查，保证指定区域不会超出屏幕范围*/
-	if (X > 127) {return;}
-	if (Y > 63) {return;}
-	if (X + Width > 128) {Width = 128 - X;}
-	if (Y + Height > 64) {Height = 64 - Y;}
-	
-	/*遍历指定区域涉及的相关页*/
-	/*(Y + Height - 1) / 8 + 1的目的是(Y + Height) / 8并向上取整*/
-	for (j = Y / 8; j < (Y + Height - 1) / 8 + 1; j ++)
-	{
-		/*设置光标位置为相关页的指定列*/
-		OLED_SetCursor(j, X);
-		/*连续写入Width个数据，将显存数组的数据写入到OLED硬件*/
-		OLED_WriteData(&OLED_DisplayBuf[j][X], Width);
-	}
-}
+//void OLED_UpdateArea(uint8_t X, uint8_t Y, uint8_t Width, uint8_t Height) {
+//	uint8_t j;
+//	
+//	/*参数检查，保证指定区域不会超出屏幕范围*/
+//	if (X > 127) {return;}
+//	if (Y > 63) {return;}
+//	if (X + Width > 128) {Width = 128 - X;}
+//	if (Y + Height > 64) {Height = 64 - Y;}
+//	
+//	/*遍历指定区域涉及的相关页*/
+//	/*(Y + Height - 1) / 8 + 1的目的是(Y + Height) / 8并向上取整*/
+//	for (j = Y / 8; j < (Y + Height - 1) / 8 + 1; j ++)
+//	{
+//		/*设置光标位置为相关页的指定列*/
+//		OLED_SetCursor(j, X);
+//		/*连续写入Width个数据，将显存数组的数据写入到OLED硬件*/
+//		OLED_WriteData(&OLED_DisplayBuf[j][X], Width);
+//	}
+//}
 
 /**
   * 函    数：将OLED显存数组全部清零

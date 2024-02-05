@@ -6,15 +6,19 @@ int main(void) {
 	NVIC_PriorityGroupConfig(NVIC_PriorityGroup_2);
 	OLED_Init();
 	
-	uint16_t i = 0;
+	uint8_t i, j, k;
+	extern uint8_t OLED_DisplayBuf[8][128];
 	
 	while (1) {
 		/*测试帧率**************************/
-		OLED_ShowNum(0, 0, i, 5, 8);
-		OLED_ShowNum(88, 16, i, 5, 8);
-		// OLED_ShowNum(88, 48, DMA_GetCurrDataCounter(DMA1_Channel3), 5, 8);
-		OLED_Update();
-		i++;
+		for (i = 0; i < 8; i++) for (j = 0; j < 128; j++) for (k = 0; k < 8; k++) {
+			OLED_DisplayBuf[i][j] |= 1 << k;
+			OLED_Update();
+		}
+		for (j = 0; j < 128; j++) for (i = 0; i < 8; i++) for (k = 0; k < 8; k++) {
+			OLED_DisplayBuf[i][j] &= ~(1 << k);
+			OLED_Update();
+		}
 		/***********************************/
 	}
 }
