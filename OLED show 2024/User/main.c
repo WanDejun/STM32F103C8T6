@@ -2,25 +2,48 @@
 #include "Delay.h"
 #include "OLED.h"
 #include "Image1.h"
+#include "Key.h"
 
 extern uint8_t OLED_DisplayBuf[8][128];
+uint8_t Image2[1024];
 
-int main(void) {
+uint8_t offset = 0;
+
+void Init(void) {
 	OLED_Init();
+	Key_Init();
+	uint16_t i, j, offset = 0;
+	
+	for (i = 0; i < 64; i++) {
+		for (j = 0; j < 96 - i; j++) {
+			Image2[(i >> 3) * 128 + j] |= 1 << (i & 0x07);
+		}
+	}
+}
 
-	uint8_t i, j;
+void Render(void) {
+	uint16_t i, j;
 	
 	for (i = 0; i < 8; i++) {
 		for (j = 0; j < 128; j++) {
-			OLED_DisplayBuf[i][j] = Image1[i * 128 + j];
+			OLED_DisplayBuf[i][j] = Image2[(i << 7) + j] ^ Image1[(i << 7) + ((j + offset) & 0x7f)];
 		}
 	}
-	
-	/*调用OLED_Update函数，将OLED显存数组的内容更新到OLED硬件进行显示*/
 	OLED_Update();
+}
+
+int main(void) {
+	Init();
+	Render();
 	
 	while (1) {
-		/*延时1000ms，观察现象*/
-		Delay_ms(1000);
+		Key_Scan();
+		if (KeyState[0]) {
+			if (KeyState[0] & 0x01) offset = (offset - 1) & 0x7f; 
+			if (KeyState[0] & 0x02) offset = (offset + 1) & 0x7f;
+			Render();
+		}
+		
+		Delay_ms(10);
 	}
 }

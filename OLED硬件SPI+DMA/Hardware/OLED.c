@@ -5,10 +5,10 @@
 #include <stdio.h>
 #include <stdarg.h>
 
- #define SPI_SPEED_36000000
+// #define SPI_SPEED_36000000
 // #define SPI_SPEED_18000000
 // #define SPI_SPEED_9000000
-// #define SPI_SPEED_4500000
+ #define SPI_SPEED_4500000
 // #define SPI_SPEED_2250000
 // #define SPI_SPEED_1125000
 // #define SPI_SPEED_562500
