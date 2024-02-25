@@ -282,9 +282,6 @@ Section Cross References
     usb_pwr.o(i.Resume) refers to usb_pwr.o(i.Resume_Init) for Resume_Init
     usb_pwr.o(i.Resume) refers to usb_pwr.o(.data) for .data
     usb_pwr.o(i.Suspend) refers to usb_pwr.o(.bss) for .bss
-    stm3210b_eval.o(i.GetKeyState) refers to stm32f10x_gpio.o(i.GPIO_ReadInputDataBit) for GPIO_ReadInputDataBit
-    stm3210b_eval.o(i.GetKeyState) refers to stm3210b_eval.o(.constdata) for .constdata
-    stm3210b_eval.o(i.GetKeyState) refers to stm3210b_eval.o(.data) for .data
     usb_core.o(i.DataStageIn) refers to usb_regs.o(i.GetEPTxAddr) for GetEPTxAddr
     usb_core.o(i.DataStageIn) refers to usb_mem.o(i.UserToPMABufferCopy) for UserToPMABufferCopy
     usb_core.o(i.DataStageIn) refers to usb_regs.o(i.SetEPTxCount) for SetEPTxCount
@@ -970,14 +967,6 @@ Removing Unused input sections from the image.
     Removing hw_config.o(.data), (1 bytes).
     Removing hw_config.o(.data), (8 bytes).
     Removing usb_pwr.o(i.PowerOff), (32 bytes).
-    Removing stm3210b_eval.o(i.GetKeyState), (24 bytes).
-    Removing stm3210b_eval.o(.constdata), (10 bytes).
-    Removing stm3210b_eval.o(.constdata), (20 bytes).
-    Removing stm3210b_eval.o(.constdata), (10 bytes).
-    Removing stm3210b_eval.o(.constdata), (10 bytes).
-    Removing stm3210b_eval.o(.constdata), (10 bytes).
-    Removing stm3210b_eval.o(.constdata), (10 bytes).
-    Removing stm3210b_eval.o(.data), (20 bytes).
     Removing usb_init.o(.data), (2 bytes).
     Removing usb_int.o(i.CTR_HP), (132 bytes).
     Removing usb_regs.o(i.ClearEPDoubleBuff), (32 bytes).
@@ -1022,7 +1011,7 @@ Removing Unused input sections from the image.
     Removing usb_regs.o(i.ToggleDTOG_RX), (32 bytes).
     Removing usb_regs.o(i.ToggleDTOG_TX), (32 bytes).
 
-545 unused section(s) (total 20593 bytes) removed from the image.
+537 unused section(s) (total 20479 bytes) removed from the image.
 
 ==============================================================================
 
@@ -1666,77 +1655,77 @@ Memory Map of the image
     Exec Addr    Load Addr    Size         Type   Attr      Idx    E Section Name        Object
 
     0x08000000   0x08000000   0x000000ec   Data   RO          132    RESET               startup_stm32f10x_md.o
-    0x080000ec   0x080000ec   0x00000008   Code   RO         4738  * !!!main             c_w.l(__main.o)
-    0x080000f4   0x080000f4   0x00000034   Code   RO         4899    !!!scatter          c_w.l(__scatter.o)
-    0x08000128   0x08000128   0x0000005a   Code   RO         4897    !!dczerorl2         c_w.l(__dczerorl2.o)
+    0x080000ec   0x080000ec   0x00000008   Code   RO         4717  * !!!main             c_w.l(__main.o)
+    0x080000f4   0x080000f4   0x00000034   Code   RO         4878    !!!scatter          c_w.l(__scatter.o)
+    0x08000128   0x08000128   0x0000005a   Code   RO         4876    !!dczerorl2         c_w.l(__dczerorl2.o)
     0x08000182   0x08000182   0x00000002   PAD
-    0x08000184   0x08000184   0x0000001c   Code   RO         4901    !!handler_zi        c_w.l(__scatter_zi.o)
-    0x080001a0   0x080001a0   0x00000002   Code   RO         4765    .ARM.Collect$$libinit$$00000000  c_w.l(libinit.o)
-    0x080001a2   0x080001a2   0x00000000   Code   RO         4772    .ARM.Collect$$libinit$$00000002  c_w.l(libinit2.o)
-    0x080001a2   0x080001a2   0x00000000   Code   RO         4774    .ARM.Collect$$libinit$$00000004  c_w.l(libinit2.o)
-    0x080001a2   0x080001a2   0x00000000   Code   RO         4777    .ARM.Collect$$libinit$$0000000A  c_w.l(libinit2.o)
-    0x080001a2   0x080001a2   0x00000000   Code   RO         4779    .ARM.Collect$$libinit$$0000000C  c_w.l(libinit2.o)
-    0x080001a2   0x080001a2   0x00000000   Code   RO         4781    .ARM.Collect$$libinit$$0000000E  c_w.l(libinit2.o)
-    0x080001a2   0x080001a2   0x00000000   Code   RO         4784    .ARM.Collect$$libinit$$00000011  c_w.l(libinit2.o)
-    0x080001a2   0x080001a2   0x00000000   Code   RO         4786    .ARM.Collect$$libinit$$00000013  c_w.l(libinit2.o)
-    0x080001a2   0x080001a2   0x00000000   Code   RO         4788    .ARM.Collect$$libinit$$00000015  c_w.l(libinit2.o)
-    0x080001a2   0x080001a2   0x00000000   Code   RO         4790    .ARM.Collect$$libinit$$00000017  c_w.l(libinit2.o)
-    0x080001a2   0x080001a2   0x00000000   Code   RO         4792    .ARM.Collect$$libinit$$00000019  c_w.l(libinit2.o)
-    0x080001a2   0x080001a2   0x00000000   Code   RO         4794    .ARM.Collect$$libinit$$0000001B  c_w.l(libinit2.o)
-    0x080001a2   0x080001a2   0x00000000   Code   RO         4796    .ARM.Collect$$libinit$$0000001D  c_w.l(libinit2.o)
-    0x080001a2   0x080001a2   0x00000000   Code   RO         4798    .ARM.Collect$$libinit$$0000001F  c_w.l(libinit2.o)
-    0x080001a2   0x080001a2   0x00000000   Code   RO         4800    .ARM.Collect$$libinit$$00000021  c_w.l(libinit2.o)
-    0x080001a2   0x080001a2   0x00000000   Code   RO         4802    .ARM.Collect$$libinit$$00000023  c_w.l(libinit2.o)
-    0x080001a2   0x080001a2   0x00000000   Code   RO         4804    .ARM.Collect$$libinit$$00000025  c_w.l(libinit2.o)
-    0x080001a2   0x080001a2   0x00000000   Code   RO         4808    .ARM.Collect$$libinit$$0000002C  c_w.l(libinit2.o)
-    0x080001a2   0x080001a2   0x00000000   Code   RO         4810    .ARM.Collect$$libinit$$0000002E  c_w.l(libinit2.o)
-    0x080001a2   0x080001a2   0x00000000   Code   RO         4812    .ARM.Collect$$libinit$$00000030  c_w.l(libinit2.o)
-    0x080001a2   0x080001a2   0x00000000   Code   RO         4814    .ARM.Collect$$libinit$$00000032  c_w.l(libinit2.o)
-    0x080001a2   0x080001a2   0x00000002   Code   RO         4815    .ARM.Collect$$libinit$$00000033  c_w.l(libinit2.o)
-    0x080001a4   0x080001a4   0x00000002   Code   RO         4835    .ARM.Collect$$libshutdown$$00000000  c_w.l(libshutdown.o)
-    0x080001a6   0x080001a6   0x00000000   Code   RO         4848    .ARM.Collect$$libshutdown$$00000002  c_w.l(libshutdown2.o)
-    0x080001a6   0x080001a6   0x00000000   Code   RO         4850    .ARM.Collect$$libshutdown$$00000004  c_w.l(libshutdown2.o)
-    0x080001a6   0x080001a6   0x00000000   Code   RO         4852    .ARM.Collect$$libshutdown$$00000006  c_w.l(libshutdown2.o)
-    0x080001a6   0x080001a6   0x00000000   Code   RO         4855    .ARM.Collect$$libshutdown$$00000009  c_w.l(libshutdown2.o)
-    0x080001a6   0x080001a6   0x00000000   Code   RO         4858    .ARM.Collect$$libshutdown$$0000000C  c_w.l(libshutdown2.o)
-    0x080001a6   0x080001a6   0x00000000   Code   RO         4860    .ARM.Collect$$libshutdown$$0000000E  c_w.l(libshutdown2.o)
-    0x080001a6   0x080001a6   0x00000000   Code   RO         4863    .ARM.Collect$$libshutdown$$00000011  c_w.l(libshutdown2.o)
-    0x080001a6   0x080001a6   0x00000002   Code   RO         4864    .ARM.Collect$$libshutdown$$00000012  c_w.l(libshutdown2.o)
-    0x080001a8   0x080001a8   0x00000000   Code   RO         4740    .ARM.Collect$$rtentry$$00000000  c_w.l(__rtentry.o)
-    0x080001a8   0x080001a8   0x00000000   Code   RO         4742    .ARM.Collect$$rtentry$$00000002  c_w.l(__rtentry2.o)
-    0x080001a8   0x080001a8   0x00000006   Code   RO         4754    .ARM.Collect$$rtentry$$00000004  c_w.l(__rtentry4.o)
-    0x080001ae   0x080001ae   0x00000000   Code   RO         4744    .ARM.Collect$$rtentry$$00000009  c_w.l(__rtentry2.o)
-    0x080001ae   0x080001ae   0x00000004   Code   RO         4745    .ARM.Collect$$rtentry$$0000000A  c_w.l(__rtentry2.o)
-    0x080001b2   0x080001b2   0x00000000   Code   RO         4747    .ARM.Collect$$rtentry$$0000000C  c_w.l(__rtentry2.o)
-    0x080001b2   0x080001b2   0x00000008   Code   RO         4748    .ARM.Collect$$rtentry$$0000000D  c_w.l(__rtentry2.o)
-    0x080001ba   0x080001ba   0x00000002   Code   RO         4769    .ARM.Collect$$rtexit$$00000000  c_w.l(rtexit.o)
-    0x080001bc   0x080001bc   0x00000000   Code   RO         4817    .ARM.Collect$$rtexit$$00000002  c_w.l(rtexit2.o)
-    0x080001bc   0x080001bc   0x00000004   Code   RO         4818    .ARM.Collect$$rtexit$$00000003  c_w.l(rtexit2.o)
-    0x080001c0   0x080001c0   0x00000006   Code   RO         4819    .ARM.Collect$$rtexit$$00000004  c_w.l(rtexit2.o)
+    0x08000184   0x08000184   0x0000001c   Code   RO         4880    !!handler_zi        c_w.l(__scatter_zi.o)
+    0x080001a0   0x080001a0   0x00000002   Code   RO         4744    .ARM.Collect$$libinit$$00000000  c_w.l(libinit.o)
+    0x080001a2   0x080001a2   0x00000000   Code   RO         4751    .ARM.Collect$$libinit$$00000002  c_w.l(libinit2.o)
+    0x080001a2   0x080001a2   0x00000000   Code   RO         4753    .ARM.Collect$$libinit$$00000004  c_w.l(libinit2.o)
+    0x080001a2   0x080001a2   0x00000000   Code   RO         4756    .ARM.Collect$$libinit$$0000000A  c_w.l(libinit2.o)
+    0x080001a2   0x080001a2   0x00000000   Code   RO         4758    .ARM.Collect$$libinit$$0000000C  c_w.l(libinit2.o)
+    0x080001a2   0x080001a2   0x00000000   Code   RO         4760    .ARM.Collect$$libinit$$0000000E  c_w.l(libinit2.o)
+    0x080001a2   0x080001a2   0x00000000   Code   RO         4763    .ARM.Collect$$libinit$$00000011  c_w.l(libinit2.o)
+    0x080001a2   0x080001a2   0x00000000   Code   RO         4765    .ARM.Collect$$libinit$$00000013  c_w.l(libinit2.o)
+    0x080001a2   0x080001a2   0x00000000   Code   RO         4767    .ARM.Collect$$libinit$$00000015  c_w.l(libinit2.o)
+    0x080001a2   0x080001a2   0x00000000   Code   RO         4769    .ARM.Collect$$libinit$$00000017  c_w.l(libinit2.o)
+    0x080001a2   0x080001a2   0x00000000   Code   RO         4771    .ARM.Collect$$libinit$$00000019  c_w.l(libinit2.o)
+    0x080001a2   0x080001a2   0x00000000   Code   RO         4773    .ARM.Collect$$libinit$$0000001B  c_w.l(libinit2.o)
+    0x080001a2   0x080001a2   0x00000000   Code   RO         4775    .ARM.Collect$$libinit$$0000001D  c_w.l(libinit2.o)
+    0x080001a2   0x080001a2   0x00000000   Code   RO         4777    .ARM.Collect$$libinit$$0000001F  c_w.l(libinit2.o)
+    0x080001a2   0x080001a2   0x00000000   Code   RO         4779    .ARM.Collect$$libinit$$00000021  c_w.l(libinit2.o)
+    0x080001a2   0x080001a2   0x00000000   Code   RO         4781    .ARM.Collect$$libinit$$00000023  c_w.l(libinit2.o)
+    0x080001a2   0x080001a2   0x00000000   Code   RO         4783    .ARM.Collect$$libinit$$00000025  c_w.l(libinit2.o)
+    0x080001a2   0x080001a2   0x00000000   Code   RO         4787    .ARM.Collect$$libinit$$0000002C  c_w.l(libinit2.o)
+    0x080001a2   0x080001a2   0x00000000   Code   RO         4789    .ARM.Collect$$libinit$$0000002E  c_w.l(libinit2.o)
+    0x080001a2   0x080001a2   0x00000000   Code   RO         4791    .ARM.Collect$$libinit$$00000030  c_w.l(libinit2.o)
+    0x080001a2   0x080001a2   0x00000000   Code   RO         4793    .ARM.Collect$$libinit$$00000032  c_w.l(libinit2.o)
+    0x080001a2   0x080001a2   0x00000002   Code   RO         4794    .ARM.Collect$$libinit$$00000033  c_w.l(libinit2.o)
+    0x080001a4   0x080001a4   0x00000002   Code   RO         4814    .ARM.Collect$$libshutdown$$00000000  c_w.l(libshutdown.o)
+    0x080001a6   0x080001a6   0x00000000   Code   RO         4827    .ARM.Collect$$libshutdown$$00000002  c_w.l(libshutdown2.o)
+    0x080001a6   0x080001a6   0x00000000   Code   RO         4829    .ARM.Collect$$libshutdown$$00000004  c_w.l(libshutdown2.o)
+    0x080001a6   0x080001a6   0x00000000   Code   RO         4831    .ARM.Collect$$libshutdown$$00000006  c_w.l(libshutdown2.o)
+    0x080001a6   0x080001a6   0x00000000   Code   RO         4834    .ARM.Collect$$libshutdown$$00000009  c_w.l(libshutdown2.o)
+    0x080001a6   0x080001a6   0x00000000   Code   RO         4837    .ARM.Collect$$libshutdown$$0000000C  c_w.l(libshutdown2.o)
+    0x080001a6   0x080001a6   0x00000000   Code   RO         4839    .ARM.Collect$$libshutdown$$0000000E  c_w.l(libshutdown2.o)
+    0x080001a6   0x080001a6   0x00000000   Code   RO         4842    .ARM.Collect$$libshutdown$$00000011  c_w.l(libshutdown2.o)
+    0x080001a6   0x080001a6   0x00000002   Code   RO         4843    .ARM.Collect$$libshutdown$$00000012  c_w.l(libshutdown2.o)
+    0x080001a8   0x080001a8   0x00000000   Code   RO         4719    .ARM.Collect$$rtentry$$00000000  c_w.l(__rtentry.o)
+    0x080001a8   0x080001a8   0x00000000   Code   RO         4721    .ARM.Collect$$rtentry$$00000002  c_w.l(__rtentry2.o)
+    0x080001a8   0x080001a8   0x00000006   Code   RO         4733    .ARM.Collect$$rtentry$$00000004  c_w.l(__rtentry4.o)
+    0x080001ae   0x080001ae   0x00000000   Code   RO         4723    .ARM.Collect$$rtentry$$00000009  c_w.l(__rtentry2.o)
+    0x080001ae   0x080001ae   0x00000004   Code   RO         4724    .ARM.Collect$$rtentry$$0000000A  c_w.l(__rtentry2.o)
+    0x080001b2   0x080001b2   0x00000000   Code   RO         4726    .ARM.Collect$$rtentry$$0000000C  c_w.l(__rtentry2.o)
+    0x080001b2   0x080001b2   0x00000008   Code   RO         4727    .ARM.Collect$$rtentry$$0000000D  c_w.l(__rtentry2.o)
+    0x080001ba   0x080001ba   0x00000002   Code   RO         4748    .ARM.Collect$$rtexit$$00000000  c_w.l(rtexit.o)
+    0x080001bc   0x080001bc   0x00000000   Code   RO         4796    .ARM.Collect$$rtexit$$00000002  c_w.l(rtexit2.o)
+    0x080001bc   0x080001bc   0x00000004   Code   RO         4797    .ARM.Collect$$rtexit$$00000003  c_w.l(rtexit2.o)
+    0x080001c0   0x080001c0   0x00000006   Code   RO         4798    .ARM.Collect$$rtexit$$00000004  c_w.l(rtexit2.o)
     0x080001c6   0x080001c6   0x00000002   PAD
     0x080001c8   0x080001c8   0x00000040   Code   RO          133    .text               startup_stm32f10x_md.o
-    0x08000208   0x08000208   0x00000006   Code   RO         4736    .text               c_w.l(heapauxi.o)
-    0x0800020e   0x0800020e   0x0000004a   Code   RO         4756    .text               c_w.l(sys_stackheap_outer.o)
-    0x08000258   0x08000258   0x00000012   Code   RO         4758    .text               c_w.l(exit.o)
+    0x08000208   0x08000208   0x00000006   Code   RO         4715    .text               c_w.l(heapauxi.o)
+    0x0800020e   0x0800020e   0x0000004a   Code   RO         4735    .text               c_w.l(sys_stackheap_outer.o)
+    0x08000258   0x08000258   0x00000012   Code   RO         4737    .text               c_w.l(exit.o)
     0x0800026a   0x0800026a   0x00000002   PAD
-    0x0800026c   0x0800026c   0x00000008   Code   RO         4766    .text               c_w.l(libspace.o)
-    0x08000274   0x08000274   0x0000000c   Code   RO         4827    .text               c_w.l(sys_exit.o)
-    0x08000280   0x08000280   0x00000002   Code   RO         4838    .text               c_w.l(use_no_semi.o)
-    0x08000282   0x08000282   0x00000000   Code   RO         4840    .text               c_w.l(indicate_semi.o)
+    0x0800026c   0x0800026c   0x00000008   Code   RO         4745    .text               c_w.l(libspace.o)
+    0x08000274   0x08000274   0x0000000c   Code   RO         4806    .text               c_w.l(sys_exit.o)
+    0x08000280   0x08000280   0x00000002   Code   RO         4817    .text               c_w.l(use_no_semi.o)
+    0x08000282   0x08000282   0x00000000   Code   RO         4819    .text               c_w.l(indicate_semi.o)
     0x08000282   0x08000282   0x00000002   PAD
     0x08000284   0x08000284   0x0000000c   Code   RO         3941    i.Audio_Equipment_Controller_GetHIDDescriptor  usb_prop.o
     0x08000290   0x08000290   0x0000000c   Code   RO         3942    i.Audio_Equipment_Controller_GetReportDescriptor  usb_prop.o
     0x0800029c   0x0800029c   0x00000002   Code   RO         3663    i.BusFault_Handler  stm32f10x_it.o
-    0x0800029e   0x0800029e   0x0000000a   Code   RO         4350    i.ByteSwap          usb_regs.o
-    0x080002a8   0x080002a8   0x000001b4   Code   RO         4303    i.CTR_LP            usb_int.o
-    0x0800045c   0x0800045c   0x00000028   Code   RO         4351    i.ClearDTOG_RX      usb_regs.o
-    0x08000484   0x08000484   0x00000028   Code   RO         4352    i.ClearDTOG_TX      usb_regs.o
-    0x080004ac   0x080004ac   0x00000020   Code   RO         4357    i.Clear_Status_Out  usb_regs.o
+    0x0800029e   0x0800029e   0x0000000a   Code   RO         4329    i.ByteSwap          usb_regs.o
+    0x080002a8   0x080002a8   0x000001b4   Code   RO         4282    i.CTR_LP            usb_int.o
+    0x0800045c   0x0800045c   0x00000028   Code   RO         4330    i.ClearDTOG_RX      usb_regs.o
+    0x08000484   0x08000484   0x00000028   Code   RO         4331    i.ClearDTOG_TX      usb_regs.o
+    0x080004ac   0x080004ac   0x00000020   Code   RO         4336    i.Clear_Status_Out  usb_regs.o
     0x080004cc   0x080004cc   0x00000024   Code   RO         3786    i.Controler_Send    hw_config.o
     0x080004f0   0x080004f0   0x00000030   Code   RO         3787    i.ControllerState   hw_config.o
-    0x08000520   0x08000520   0x000000b8   Code   RO         4157    i.DataStageIn       usb_core.o
-    0x080005d8   0x080005d8   0x000000c8   Code   RO         4158    i.DataStageOut      usb_core.o
-    0x080006a0   0x080006a0   0x000001b8   Code   RO         4159    i.Data_Setup0       usb_core.o
+    0x08000520   0x08000520   0x000000b8   Code   RO         4136    i.DataStageIn       usb_core.o
+    0x080005d8   0x080005d8   0x000000c8   Code   RO         4137    i.DataStageOut      usb_core.o
+    0x080006a0   0x080006a0   0x000001b8   Code   RO         4138    i.Data_Setup0       usb_core.o
     0x08000858   0x08000858   0x00000002   Code   RO         3664    i.DebugMon_Handler  stm32f10x_it.o
     0x0800085a   0x0800085a   0x00000020   Code   RO         3198    i.Delay_us          delay.o
     0x0800087a   0x0800087a   0x00000002   PAD
@@ -1748,13 +1737,13 @@ Memory Map of the image
     0x080009a2   0x080009a2   0x00000006   Code   RO         1350    i.GPIO_ReadInputData  stm32f10x_gpio.o
     0x080009a8   0x080009a8   0x00000004   Code   RO         1354    i.GPIO_ResetBits    stm32f10x_gpio.o
     0x080009ac   0x080009ac   0x00000004   Code   RO         1355    i.GPIO_SetBits      stm32f10x_gpio.o
-    0x080009b0   0x080009b0   0x00000020   Code   RO         4369    i.GetEPRxAddr       usb_regs.o
-    0x080009d0   0x080009d0   0x00000020   Code   RO         4370    i.GetEPRxCount      usb_regs.o
-    0x080009f0   0x080009f0   0x0000001c   Code   RO         4372    i.GetEPTxAddr       usb_regs.o
+    0x080009b0   0x080009b0   0x00000020   Code   RO         4348    i.GetEPRxAddr       usb_regs.o
+    0x080009d0   0x080009d0   0x00000020   Code   RO         4349    i.GetEPRxCount      usb_regs.o
+    0x080009f0   0x080009f0   0x0000001c   Code   RO         4351    i.GetEPTxAddr       usb_regs.o
     0x08000a0c   0x08000a0c   0x00000038   Code   RO         3788    i.Get_SerialNum     hw_config.o
     0x08000a44   0x08000a44   0x00000002   Code   RO         3665    i.HardFault_Handler  stm32f10x_it.o
     0x08000a46   0x08000a46   0x00000002   PAD
-    0x08000a48   0x08000a48   0x00000060   Code   RO         4160    i.In0_Process       usb_core.o
+    0x08000a48   0x08000a48   0x00000060   Code   RO         4139    i.In0_Process       usb_core.o
     0x08000aa8   0x08000aa8   0x0000003a   Code   RO         3789    i.IntToUnicode      hw_config.o
     0x08000ae2   0x08000ae2   0x00000002   PAD
     0x08000ae4   0x08000ae4   0x0000007c   Code   RO         3943    i.KeyBoard_Data_Setup  usb_prop.o
@@ -1784,16 +1773,16 @@ Memory Map of the image
     0x08000f0c   0x08000f0c   0x0000011c   Code   RO         3431    i.MatrixKeyBoard_Scan  matrixkeyboard.o
     0x08001028   0x08001028   0x00000002   Code   RO         3666    i.MemManage_Handler  stm32f10x_it.o
     0x0800102a   0x0800102a   0x00000002   Code   RO         3667    i.NMI_Handler       stm32f10x_it.o
-    0x0800102c   0x0800102c   0x00000002   Code   RO         4161    i.NOP_Process       usb_core.o
+    0x0800102c   0x0800102c   0x00000002   Code   RO         4140    i.NOP_Process       usb_core.o
     0x0800102e   0x0800102e   0x00000002   PAD
     0x08001030   0x08001030   0x00000064   Code   RO          137    i.NVIC_Init         misc.o
     0x08001094   0x08001094   0x00000014   Code   RO          138    i.NVIC_PriorityGroupConfig  misc.o
-    0x080010a8   0x080010a8   0x000000ec   Code   RO         4162    i.NoData_Setup0     usb_core.o
-    0x08001194   0x08001194   0x0000004c   Code   RO         4163    i.Out0_Process      usb_core.o
-    0x080011e0   0x080011e0   0x00000024   Code   RO         4332    i.PMAToUserBufferCopy  usb_mem.o
+    0x080010a8   0x080010a8   0x000000ec   Code   RO         4141    i.NoData_Setup0     usb_core.o
+    0x08001194   0x08001194   0x0000004c   Code   RO         4142    i.Out0_Process      usb_core.o
+    0x080011e0   0x080011e0   0x00000024   Code   RO         4311    i.PMAToUserBufferCopy  usb_mem.o
     0x08001204   0x08001204   0x00000002   Code   RO         3668    i.PendSV_Handler    stm32f10x_it.o
     0x08001206   0x08001206   0x00000002   PAD
-    0x08001208   0x08001208   0x00000040   Code   RO         4164    i.Post0_Process     usb_core.o
+    0x08001208   0x08001208   0x00000040   Code   RO         4143    i.Post0_Process     usb_core.o
     0x08001248   0x08001248   0x00000034   Code   RO         4069    i.PowerOn           usb_pwr.o
     0x0800127c   0x0800127c   0x0000001c   Code   RO         1775    i.RCC_APB1PeriphClockCmd  stm32f10x_rcc.o
     0x08001298   0x08001298   0x0000001c   Code   RO         1777    i.RCC_APB2PeriphClockCmd  stm32f10x_rcc.o
@@ -1802,48 +1791,48 @@ Memory Map of the image
     0x08001358   0x08001358   0x00000018   Code   RO         4071    i.Resume_Init       usb_pwr.o
     0x08001370   0x08001370   0x00000002   Code   RO         3669    i.SVC_Handler       stm32f10x_it.o
     0x08001372   0x08001372   0x00000002   PAD
-    0x08001374   0x08001374   0x00000010   Code   RO         4380    i.SetBTABLE         usb_regs.o
-    0x08001384   0x08001384   0x00000048   Code   RO         4165    i.SetDeviceAddress  usb_core.o
-    0x080013cc   0x080013cc   0x00000020   Code   RO         4394    i.SetEPRxAddr       usb_regs.o
-    0x080013ec   0x080013ec   0x00000044   Code   RO         4395    i.SetEPRxCount      usb_regs.o
-    0x08001430   0x08001430   0x00000030   Code   RO         4396    i.SetEPRxStatus     usb_regs.o
-    0x08001460   0x08001460   0x00000028   Code   RO         4397    i.SetEPRxValid      usb_regs.o
-    0x08001488   0x08001488   0x00000020   Code   RO         4398    i.SetEPTxAddr       usb_regs.o
-    0x080014a8   0x080014a8   0x0000001c   Code   RO         4399    i.SetEPTxCount      usb_regs.o
-    0x080014c4   0x080014c4   0x00000030   Code   RO         4400    i.SetEPTxStatus     usb_regs.o
-    0x080014f4   0x080014f4   0x00000028   Code   RO         4401    i.SetEPTxValid      usb_regs.o
-    0x0800151c   0x0800151c   0x0000001c   Code   RO         4402    i.SetEPType         usb_regs.o
-    0x08001538   0x08001538   0x0000000c   Code   RO         4404    i.SetISTR           usb_regs.o
+    0x08001374   0x08001374   0x00000010   Code   RO         4359    i.SetBTABLE         usb_regs.o
+    0x08001384   0x08001384   0x00000048   Code   RO         4144    i.SetDeviceAddress  usb_core.o
+    0x080013cc   0x080013cc   0x00000020   Code   RO         4373    i.SetEPRxAddr       usb_regs.o
+    0x080013ec   0x080013ec   0x00000044   Code   RO         4374    i.SetEPRxCount      usb_regs.o
+    0x08001430   0x08001430   0x00000030   Code   RO         4375    i.SetEPRxStatus     usb_regs.o
+    0x08001460   0x08001460   0x00000028   Code   RO         4376    i.SetEPRxValid      usb_regs.o
+    0x08001488   0x08001488   0x00000020   Code   RO         4377    i.SetEPTxAddr       usb_regs.o
+    0x080014a8   0x080014a8   0x0000001c   Code   RO         4378    i.SetEPTxCount      usb_regs.o
+    0x080014c4   0x080014c4   0x00000030   Code   RO         4379    i.SetEPTxStatus     usb_regs.o
+    0x080014f4   0x080014f4   0x00000028   Code   RO         4380    i.SetEPTxValid      usb_regs.o
+    0x0800151c   0x0800151c   0x0000001c   Code   RO         4381    i.SetEPType         usb_regs.o
+    0x08001538   0x08001538   0x0000000c   Code   RO         4383    i.SetISTR           usb_regs.o
     0x08001544   0x08001544   0x00000004   Code   RO           17    i.SetSysClock       system_stm32f10x.o
     0x08001548   0x08001548   0x000000b0   Code   RO           18    i.SetSysClockTo72   system_stm32f10x.o
     0x080015f8   0x080015f8   0x00000038   Code   RO         3793    i.Set_System        hw_config.o
     0x08001630   0x08001630   0x00000014   Code   RO         3794    i.Set_USBClock      hw_config.o
-    0x08001644   0x08001644   0x00000088   Code   RO         4166    i.Setup0_Process    usb_core.o
-    0x080016cc   0x080016cc   0x00000110   Code   RO         4167    i.Standard_ClearFeature  usb_core.o
-    0x080017dc   0x080017dc   0x00000028   Code   RO         4168    i.Standard_GetConfiguration  usb_core.o
-    0x08001804   0x08001804   0x00000020   Code   RO         4169    i.Standard_GetDescriptorData  usb_core.o
-    0x08001824   0x08001824   0x00000028   Code   RO         4170    i.Standard_GetInterface  usb_core.o
-    0x0800184c   0x0800184c   0x000000bc   Code   RO         4171    i.Standard_GetStatus  usb_core.o
-    0x08001908   0x08001908   0x00000038   Code   RO         4172    i.Standard_SetConfiguration  usb_core.o
-    0x08001940   0x08001940   0x00000024   Code   RO         4173    i.Standard_SetDeviceFeature  usb_core.o
-    0x08001964   0x08001964   0x00000094   Code   RO         4174    i.Standard_SetEndPointFeature  usb_core.o
-    0x080019f8   0x080019f8   0x0000004c   Code   RO         4175    i.Standard_SetInterface  usb_core.o
+    0x08001644   0x08001644   0x00000088   Code   RO         4145    i.Setup0_Process    usb_core.o
+    0x080016cc   0x080016cc   0x00000110   Code   RO         4146    i.Standard_ClearFeature  usb_core.o
+    0x080017dc   0x080017dc   0x00000028   Code   RO         4147    i.Standard_GetConfiguration  usb_core.o
+    0x08001804   0x08001804   0x00000020   Code   RO         4148    i.Standard_GetDescriptorData  usb_core.o
+    0x08001824   0x08001824   0x00000028   Code   RO         4149    i.Standard_GetInterface  usb_core.o
+    0x0800184c   0x0800184c   0x000000bc   Code   RO         4150    i.Standard_GetStatus  usb_core.o
+    0x08001908   0x08001908   0x00000038   Code   RO         4151    i.Standard_SetConfiguration  usb_core.o
+    0x08001940   0x08001940   0x00000024   Code   RO         4152    i.Standard_SetDeviceFeature  usb_core.o
+    0x08001964   0x08001964   0x00000094   Code   RO         4153    i.Standard_SetEndPointFeature  usb_core.o
+    0x080019f8   0x080019f8   0x0000004c   Code   RO         4154    i.Standard_SetInterface  usb_core.o
     0x08001a44   0x08001a44   0x00000078   Code   RO         4072    i.Suspend           usb_pwr.o
     0x08001abc   0x08001abc   0x00000002   Code   RO         3670    i.SysTick_Handler   stm32f10x_it.o
     0x08001abe   0x08001abe   0x00000002   PAD
     0x08001ac0   0x08001ac0   0x00000050   Code   RO           20    i.SystemInit        system_stm32f10x.o
     0x08001b10   0x08001b10   0x00000008   Code   RO         3671    i.USBWakeUp_IRQHandler  stm32f10x_it.o
     0x08001b18   0x08001b18   0x0000001c   Code   RO         3795    i.USB_Cable_Config  hw_config.o
-    0x08001b34   0x08001b34   0x00000028   Code   RO         4276    i.USB_Init          usb_init.o
+    0x08001b34   0x08001b34   0x00000028   Code   RO         4255    i.USB_Init          usb_init.o
     0x08001b5c   0x08001b5c   0x0000002a   Code   RO         3796    i.USB_Interrupts_Config  hw_config.o
     0x08001b86   0x08001b86   0x00000002   PAD
     0x08001b88   0x08001b88   0x0000015c   Code   RO         3921    i.USB_Istr          usb_istr.o
     0x08001ce4   0x08001ce4   0x00000004   Code   RO         3672    i.USB_LP_CAN1_RX0_IRQHandler  stm32f10x_it.o
-    0x08001ce8   0x08001ce8   0x00000020   Code   RO         4710    i.USB_SIL_Init      usb_sil.o
-    0x08001d08   0x08001d08   0x00000024   Code   RO         4711    i.USB_SIL_Read      usb_sil.o
-    0x08001d2c   0x08001d2c   0x00000026   Code   RO         4712    i.USB_SIL_Write     usb_sil.o
+    0x08001ce8   0x08001ce8   0x00000020   Code   RO         4689    i.USB_SIL_Init      usb_sil.o
+    0x08001d08   0x08001d08   0x00000024   Code   RO         4690    i.USB_SIL_Read      usb_sil.o
+    0x08001d2c   0x08001d2c   0x00000026   Code   RO         4691    i.USB_SIL_Write     usb_sil.o
     0x08001d52   0x08001d52   0x00000002   Code   RO         3673    i.UsageFault_Handler  stm32f10x_it.o
-    0x08001d54   0x08001d54   0x0000002c   Code   RO         4333    i.UserToPMABufferCopy  usb_mem.o
+    0x08001d54   0x08001d54   0x0000002c   Code   RO         4312    i.UserToPMABufferCopy  usb_mem.o
     0x08001d80   0x08001d80   0x00000048   Code   RO         3586    i.main              main.o
     0x08001dc8   0x08001dc8   0x00000012   Data   RO         3868    .constdata          usb_desc.o
     0x08001dda   0x08001dda   0x00000042   Data   RO         3869    .constdata          usb_desc.o
@@ -1852,7 +1841,7 @@ Memory Map of the image
     0x08001e98   0x08001e98   0x00000004   Data   RO         3872    .constdata          usb_desc.o
     0x08001e9c   0x08001e9c   0x00000026   Data   RO         3873    .constdata          usb_desc.o
     0x08001ec2   0x08001ec2   0x0000001e   Data   RO         3874    .constdata          usb_desc.o
-    0x08001ee0   0x08001ee0   0x00000020   Data   RO         4895    Region$$Table       anon$$obj.o
+    0x08001ee0   0x08001ee0   0x00000020   Data   RO         4874    Region$$Table       anon$$obj.o
 
 
     Execution Region RW_IRAM1 (Exec base: 0x20000000, Load base: 0x08001f00, Size: 0x00000838, Max: 0x00005000, ABSOLUTE, COMPRESSED[0x000000b0])
@@ -1876,21 +1865,21 @@ Memory Map of the image
     0x2000011c   COMPRESSED   0x00000001   Data   RW         4075    .data               usb_pwr.o
     0x2000011d   COMPRESSED   0x00000003   PAD
     0x20000120   COMPRESSED   0x00000008   Data   RW         4076    .data               usb_pwr.o
-    0x20000128   COMPRESSED   0x00000010   Data   RW         4140    .data               keyboardmapconfig.o
-    0x20000138   COMPRESSED   0x00000008   Data   RW         4141    .data               keyboardmapconfig.o
-    0x20000140   COMPRESSED   0x00000008   Data   RW         4142    .data               keyboardmapconfig.o
-    0x20000148   COMPRESSED   0x00000008   Data   RW         4176    .data               usb_core.o
-    0x20000150   COMPRESSED   0x00000001   Data   RW         4278    .data               usb_init.o
+    0x20000128   COMPRESSED   0x00000010   Data   RW         4119    .data               keyboardmapconfig.o
+    0x20000138   COMPRESSED   0x00000008   Data   RW         4120    .data               keyboardmapconfig.o
+    0x20000140   COMPRESSED   0x00000008   Data   RW         4121    .data               keyboardmapconfig.o
+    0x20000148   COMPRESSED   0x00000008   Data   RW         4155    .data               usb_core.o
+    0x20000150   COMPRESSED   0x00000001   Data   RW         4257    .data               usb_init.o
     0x20000151   COMPRESSED   0x00000003   PAD
-    0x20000154   COMPRESSED   0x0000000c   Data   RW         4279    .data               usb_init.o
-    0x20000160   COMPRESSED   0x00000002   Data   RW         4281    .data               usb_init.o
-    0x20000162   COMPRESSED   0x00000004   Data   RW         4304    .data               usb_int.o
+    0x20000154   COMPRESSED   0x0000000c   Data   RW         4258    .data               usb_init.o
+    0x20000160   COMPRESSED   0x00000002   Data   RW         4260    .data               usb_init.o
+    0x20000162   COMPRESSED   0x00000004   Data   RW         4283    .data               usb_int.o
     0x20000166   COMPRESSED   0x00000002   PAD
     0x20000168        -       0x00000021   Zero   RW         3432    .bss                matrixkeyboard.o
     0x20000189        -       0x0000000f   Zero   RW         3797    .bss                hw_config.o
     0x20000198        -       0x00000020   Zero   RW         4073    .bss                usb_pwr.o
-    0x200001b8        -       0x0000001c   Zero   RW         4277    .bss                usb_init.o
-    0x200001d4        -       0x00000060   Zero   RW         4767    .bss                c_w.l(libspace.o)
+    0x200001b8        -       0x0000001c   Zero   RW         4256    .bss                usb_init.o
+    0x200001d4        -       0x00000060   Zero   RW         4746    .bss                c_w.l(libspace.o)
     0x20000234   COMPRESSED   0x00000004   PAD
     0x20000238        -       0x00000200   Zero   RW          131    HEAP                startup_stm32f10x_md.o
     0x20000438        -       0x00000400   Zero   RW          130    STACK               startup_stm32f10x_md.o

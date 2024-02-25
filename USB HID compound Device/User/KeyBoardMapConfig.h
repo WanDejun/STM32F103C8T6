@@ -7,15 +7,15 @@
 #define Column_Cnt		4
 #define	Key_Cnt			Line_Cnt * Column_Cnt
 
-#define Line1_Pin		GPIO_Pin_4
-#define Line2_Pin		GPIO_Pin_5
-#define Line3_Pin		GPIO_Pin_6
-#define Line4_Pin		GPIO_Pin_7
+#define Line1_Pin		GPIO_Pin_0
+#define Line2_Pin		GPIO_Pin_1
+#define Line3_Pin		GPIO_Pin_2
+#define Line4_Pin		GPIO_Pin_3
 	
-#define Column1_Pin 	GPIO_Pin_3
-#define Column2_Pin 	GPIO_Pin_2
-#define Column3_Pin 	GPIO_Pin_1
-#define Column4_Pin 	GPIO_Pin_0
+#define Column1_Pin 	GPIO_Pin_4
+#define Column2_Pin 	GPIO_Pin_5
+#define Column3_Pin 	GPIO_Pin_6
+#define Column4_Pin 	GPIO_Pin_7
 
 extern uint16_t Line_Pin[Line_Cnt];
 extern uint16_t Column_Pin[Column_Cnt];

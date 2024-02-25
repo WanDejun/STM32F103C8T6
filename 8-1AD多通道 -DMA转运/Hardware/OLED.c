@@ -2,35 +2,33 @@
 #include "OLED_Font.h"
 
 /*引脚配置 根据接线修改 5-9行， 20-28行 D0, D1 对应CLK, MOS*/
-#define OLED_W_D0(x)		GPIO_WriteBit(GPIOB, GPIO_Pin_5, (BitAction)(x))
-#define OLED_W_D1(x)		GPIO_WriteBit(GPIOB, GPIO_Pin_6, (BitAction)(x))
-#define OLED_W_RES(x)		GPIO_WriteBit(GPIOB, GPIO_Pin_7, (BitAction)(x))
-#define OLED_W_DC(x)		GPIO_WriteBit(GPIOB, GPIO_Pin_8, (BitAction)(x))
-#define OLED_W_CS(x)		GPIO_WriteBit(GPIOB, GPIO_Pin_9, (BitAction)(x))
+#define OLED_W_D0(x)		GPIO_WriteBit(GPIOA, GPIO_Pin_5, (BitAction)(x))
+#define OLED_W_D1(x)		GPIO_WriteBit(GPIOA, GPIO_Pin_7, (BitAction)(x))
+// #define OLED_W_RES(x)		GPIO_WriteBit(GPIOA, GPIO_Pin_7, (BitAction)(x))
+#define OLED_W_DC(x)		GPIO_WriteBit(GPIOA, GPIO_Pin_6, (BitAction)(x))
+#define OLED_W_CS(x)		GPIO_WriteBit(GPIOA, GPIO_Pin_4, (BitAction)(x))
 
 /*引脚初始化*/
 void OLED_SPI_Init(void)
 {
     RCC_APB2PeriphClockCmd(RCC_APB2Periph_GPIOA, ENABLE);
-    RCC_APB2PeriphClockCmd(RCC_APB2Periph_GPIOB, ENABLE);
+    RCC_APB2PeriphClockCmd(RCC_APB2Periph_GPIOA, ENABLE);
 	
 	GPIO_InitTypeDef GPIO_InitStructure;
  	GPIO_InitStructure.GPIO_Mode = GPIO_Mode_Out_PP;
 	GPIO_InitStructure.GPIO_Speed = GPIO_Speed_50MHz;
+	GPIO_InitStructure.GPIO_Pin = GPIO_Pin_4;
+ 	GPIO_Init(GPIOA, &GPIO_InitStructure);
 	GPIO_InitStructure.GPIO_Pin = GPIO_Pin_5;
- 	GPIO_Init(GPIOB, &GPIO_InitStructure);
+ 	GPIO_Init(GPIOA, &GPIO_InitStructure);
 	GPIO_InitStructure.GPIO_Pin = GPIO_Pin_6;
- 	GPIO_Init(GPIOB, &GPIO_InitStructure);
+ 	GPIO_Init(GPIOA, &GPIO_InitStructure);
 	GPIO_InitStructure.GPIO_Pin = GPIO_Pin_7;
- 	GPIO_Init(GPIOB, &GPIO_InitStructure);
-	GPIO_InitStructure.GPIO_Pin = GPIO_Pin_8;
- 	GPIO_Init(GPIOB, &GPIO_InitStructure);
-	GPIO_InitStructure.GPIO_Pin = GPIO_Pin_9;
- 	GPIO_Init(GPIOB, &GPIO_InitStructure);
+ 	GPIO_Init(GPIOA, &GPIO_InitStructure);
 	
 	OLED_W_D0(0);
 	OLED_W_D1(1);
-	OLED_W_RES(1);
+	//OLED_W_RES(1);
 	OLED_W_DC(1);
 	OLED_W_CS(1);
 }
